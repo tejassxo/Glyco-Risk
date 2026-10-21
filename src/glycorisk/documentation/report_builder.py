@@ -28,6 +28,16 @@ def set_cell_text(cell, text, bold=False, italic=False, font_size_pt=10, align=W
     run = p.add_run(text)
     style_run(run, font_size_pt=font_size_pt, bold=bold, italic=italic)
 
+def insert_paragraph_after(p, text="", font_size_pt=12, bold=False, italic=False):
+    new_p_elm = docx.oxml.OxmlElement('w:p')
+    p._element.addnext(new_p_elm)
+    new_p = docx.text.paragraph.Paragraph(new_p_elm, p._parent)
+    if text:
+        new_p.text = text
+        for r in new_p.runs:
+            style_run(r, font_size_pt=font_size_pt, bold=bold, italic=italic)
+    return new_p
+
 def insert_image_in_cell(cell, image_path, width_inches=5.2):
     cell.text = ""
     p = cell.paragraphs[0]
