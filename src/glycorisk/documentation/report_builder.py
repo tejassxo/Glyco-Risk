@@ -309,6 +309,28 @@ def build_report():
         if "[Guidance: This section is the core NBA evidence" in p.text or "[Guidance: Bloom’s levels:" in p.text:
             p.text = ""
 
+    # Purge any misplaced/duplicate paragraphs from earlier executions across all chapters
+    p_to_del = []
+    for p in doc.paragraphs:
+        txt = p.text.strip()
+        if (txt.startswith('Scope and Limitations: The system') or 
+            txt.startswith('Organisation of the Report: Chapter 2') or
+            txt.startswith('A rigorous audit of the existing literature') or
+            txt.startswith('Data quality auditing uncovered two primary threats') or
+            txt.startswith('Confusion Matrix Analysis: Figure 7.1') or
+            txt.startswith('ROC and Precision-Recall Trajectories: Figure 7.2') or
+            txt.startswith('Clinical Error Forensics on Misclassifications:') or
+            txt.startswith('Explainable AI via TreeSHAP: Figure 7.3') or
+            txt.startswith('Probability Calibration and Reliability Analysis: Figure 7.4') or
+            txt.startswith('Clinical Dashboard Deployment: The GlycoCheck AI') or
+            txt.startswith('In this investigation, we successfully designed') or
+            txt.startswith('Limitations of the Current Study:\n1. Retrospective') or
+            txt.startswith('Future Research Scope:\n1. Multi-Center Federated')):
+            p_to_del.append(p)
+
+    for p in p_to_del:
+        p._element.getparent().remove(p._element)
+
     # =========================================================================
     # 4. CHAPTER 1: INTRODUCTION
     # =========================================================================
