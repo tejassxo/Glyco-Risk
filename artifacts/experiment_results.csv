@@ -1,0 +1,6 @@
+model_name,key,best_params,training_latency_ms,val_auc,val_pr_auc,val_f1,val_sensitivity,val_brier,best_iteration
+Logistic Regression (L2),logistic_regression,{'C': 0.1},93.56,0.8056666666666666,0.6672134152586366,0.6666666666666666,0.75,0.18497625430740192,
+Support Vector Machine (RBF),svm_rbf,"{'C': 0.1, 'gamma': 0.05}",1204.02,0.8046666666666668,0.6945101491806794,0.6595744680851063,0.775,0.17500658282910328,
+Random Forest Classifier,random_forest,"{'max_depth': 3, 'min_samples_split': 2, 'n_estimators': 100}",7286.18,0.8126666666666666,0.6796875927973279,0.6451612903225806,0.75,0.1787365090577361,
+XGBoost Classifier (Primary),xgboost,"{'colsample_bytree': 0.8, 'learning_rate': 0.05, 'max_depth': 3, 'reg_alpha': 0.0, 'subsample': 0.8}",44756.87,0.8266666666666667,0.6854142347487667,0.6521739130434783,0.75,0.17010436952114105,40.0
+LightGBM Classifier,lightgbm,"{'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 80, 'num_leaves': 15}",2050.65,0.819,0.651235678069462,0.6666666666666666,0.775,0.1720368027853964,

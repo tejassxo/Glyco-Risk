@@ -1,0 +1,141 @@
+{
+  "patient_id": "PT-TEST-DEMO-01",
+  "timestamp_utc": "2026-10-21T06:30:50.272341+00:00",
+  "prediction": "Positive (High Diabetic Risk)",
+  "is_diabetic_flag": true,
+  "risk_probability": 0.6,
+  "risk_percentage": 60.0,
+  "risk_tier": "HIGH_RISK",
+  "tier_label": "High Clinical Risk",
+  "tier_color": "#FF6B4A",
+  "confidence_status": "BORDERLINE_UNCERTAINTY",
+  "recommended_clinical_action": "Urgent endocrinologist consultation, comprehensive OGTT and glycemic panel.",
+  "top_contributing_factors": [
+    {
+      "feature": "Glucose",
+      "clinical_label": "Plasma Glucose Concentration",
+      "patient_value": 148.0,
+      "unit": "mg/dL",
+      "normal_range": "70 - 140 mg/dL (Normal: <100 fasting, <140 2h-OGTT; Impaired: 140-199; Diabetes: >=200)",
+      "impact": "+0.248",
+      "direction": "RISK_INCREASING"
+    },
+    {
+      "feature": "Insulin",
+      "clinical_label": "2-Hour Serum Insulin",
+      "patient_value": 197.8,
+      "unit": "mu U/ml",
+      "normal_range": "16 - 166 mu U/ml",
+      "impact": "+0.220",
+      "direction": "RISK_INCREASING"
+    },
+    {
+      "feature": "Age",
+      "clinical_label": "Age",
+      "patient_value": 50.0,
+      "unit": "years",
+      "normal_range": "21 - 81 years",
+      "impact": "+0.194",
+      "direction": "RISK_INCREASING"
+    }
+  ],
+  "protective_factors": [
+    {
+      "feature": "Pregnancies",
+      "clinical_label": "Pregnancies",
+      "patient_value": 6.0,
+      "unit": "count",
+      "normal_range": "0 - 4",
+      "impact": "-0.061",
+      "direction": "PROTECTIVE"
+    },
+    {
+      "feature": "BloodPressure",
+      "clinical_label": "Diastolic Blood Pressure",
+      "patient_value": 72.0,
+      "unit": "mm Hg",
+      "normal_range": "60 - 80 mm Hg (Normal: <80; Elevated/Stage 1: 80-89)",
+      "impact": "-0.002",
+      "direction": "PROTECTIVE"
+    }
+  ],
+  "all_feature_attributions": [
+    {
+      "feature": "Glucose",
+      "label": "Plasma Glucose Concentration",
+      "shap_value": 0.24790914356708527,
+      "impact": "+0.248",
+      "direction": "RISK_INCREASING",
+      "abs_impact": 0.24790914356708527
+    },
+    {
+      "feature": "Insulin",
+      "label": "2-Hour Serum Insulin",
+      "shap_value": 0.21978996694087982,
+      "impact": "+0.220",
+      "direction": "RISK_INCREASING",
+      "abs_impact": 0.21978996694087982
+    },
+    {
+      "feature": "Age",
+      "label": "Age",
+      "shap_value": 0.19415093958377838,
+      "impact": "+0.194",
+      "direction": "RISK_INCREASING",
+      "abs_impact": 0.19415093958377838
+    },
+    {
+      "feature": "SkinThickness",
+      "label": "Triceps Skinfold Thickness",
+      "shap_value": 0.15239585936069489,
+      "impact": "+0.152",
+      "direction": "RISK_INCREASING",
+      "abs_impact": 0.15239585936069489
+    },
+    {
+      "feature": "BMI",
+      "label": "Body Mass Index",
+      "shap_value": 0.14924025535583496,
+      "impact": "+0.149",
+      "direction": "RISK_INCREASING",
+      "abs_impact": 0.14924025535583496
+    },
+    {
+      "feature": "DiabetesPedigreeFunction",
+      "label": "Diabetes Pedigree Function",
+      "shap_value": 0.06185883283615112,
+      "impact": "+0.062",
+      "direction": "RISK_INCREASING",
+      "abs_impact": 0.06185883283615112
+    },
+    {
+      "feature": "Pregnancies",
+      "label": "Pregnancies",
+      "shap_value": -0.06121654435992241,
+      "impact": "-0.061",
+      "direction": "PROTECTIVE",
+      "abs_impact": 0.06121654435992241
+    },
+    {
+      "feature": "BloodPressure",
+      "label": "Diastolic Blood Pressure",
+      "shap_value": -0.001898901886306703,
+      "impact": "-0.002",
+      "direction": "PROTECTIVE",
+      "abs_impact": 0.001898901886306703
+    }
+  ],
+  "imputed_patient_telemetry": {
+    "Pregnancies": 6.0,
+    "Glucose": 148.0,
+    "BloodPressure": 72.0,
+    "SkinThickness": 35.0,
+    "Insulin": 197.8,
+    "BMI": 33.6,
+    "DiabetesPedigreeFunction": 0.627,
+    "Age": 50.0
+  },
+  "model_version": "glycorisk-xgboost-calibrated-v1",
+  "calibration_method": "Platt Scaling (Sigmoid)",
+  "inference_latency_ms": 7.38
+}

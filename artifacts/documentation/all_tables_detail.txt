@@ -1,0 +1,374 @@
+=== TABLE 0 (5 rows x 4 cols) ===
+  R0: ['S.No', 'Roll Number', 'Name of the Student', 'Role in Team']
+  R1: ['1', '', '', 'Team Leader']
+  R2: ['2', '', '', '']
+  R3: ['3', '', '', '']
+  R4: ['4', '', '', '']
+
+=== TABLE 1 (5 rows x 3 cols) ===
+  R0: ['S.No', 'Roll Number', 'Name of the Student']
+  R1: ['1', '', '']
+  R2: ['2', '', '']
+  R3: ['3', '', '']
+  R4: ['4', '', '']
+
+=== TABLE 2 (4 rows x 1 cols) ===
+  R0: ['Signature']
+  R1: ['Course Coordinator']
+  R2: ['Name: ________________']
+  R3: ['Date: ________________']
+
+=== TABLE 3 (5 rows x 4 cols) ===
+  R0: ['S.No', 'Roll Number', 'Name of the Student', 'Signature']
+  R1: ['1', '', '', '']
+  R2: ['2', '', '', '']
+  R3: ['3', '', '', '']
+  R4: ['4', '', '', '']
+
+=== TABLE 4 (22 rows x 3 cols) ===
+  R0: ['Chapter', 'Title', 'Page No.']
+  R1: ['', 'Certificate', 'i']
+  R2: ['', 'Declaration and Acknowledgement', 'ii']
+  R3: ['', 'Abstract', 'iii']
+  R4: ['', 'Outcome Mapping (CO – PO – PSO)', 'iv']
+  R5: ['1', 'Introduction', '']
+  R6: ['2', 'Literature Survey', '']
+  R7: ['3', 'Dataset Description', '']
+  R8: ['4', 'Data Preprocessing and Feature Engineering', '']
+  R9: ['5', 'Methodology and Model Design', '']
+  R10: ['6', 'Model Training and Convergence Analysis', '']
+  R11: ['7', 'Evaluation and Results', '']
+  R12: ['8', 'Responsible AI: Societal, Environmental and Ethical Considerations', '']
+  R13: ['9', 'Conclusion and Future Scope', '']
+  R14: ['', 'References', '']
+  R15: ['A', 'Appendix A – Source Code, Dataset and Reproducibility', '']
+  R16: ['B', 'Appendix B – Weekly Progress Log', '']
+  R17: ['C', 'Appendix C – Assessment Rubrics', '']
+  R18: ['D', 'Appendix D – Individual Assessment Sheet', '']
+  R19: ['E', 'Appendix E – CO Attainment Calculation', '']
+  R20: ['F', 'Appendix F – Student Self-Reflection', '']
+  R21: ['G', 'Appendix G – NBA Evidence Checklist', '']
+
+=== TABLE 5 (5 rows x 4 cols) ===
+  R0: ['CO No.', 'Course Outcome Statement', 'Bloom’s Level', 'Addressed in (Chapter / Activity)']
+  R1: ['CO1', '', '', '']
+  R2: ['CO2', '', '', '']
+  R3: ['CO3', '', '', '']
+  R4: ['CO4', '', '', '']
+
+=== TABLE 6 (6 rows x 14 cols) ===
+  R0: ['CO', 'PO1', 'PO2', 'PO3', 'PO4', 'PO5', 'PO6', 'PO7', 'PO8', 'PO9', 'PO10', 'PO11', 'PSO1', 'PSO2']
+  R1: ['CO1', '', '', '', '', '', '', '', '', '', '', '', '', '']
+  R2: ['CO2', '', '', '', '', '', '', '', '', '', '', '', '', '']
+  R3: ['CO3', '', '', '', '', '', '', '', '', '', '', '', '', '']
+  R4: ['CO4', '', '', '', '', '', '', '', '', '', '', '', '', '']
+  R5: ['Avg.', '', '', '', '', '', '', '', '', '', '', '', '', '']
+
+=== TABLE 7 (7 rows x 3 cols) ===
+  R0: ['Mapping', 'Level', 'Justification (how the project activity supports this PO / PSO)']
+  R1: ['CO1 – PO1', '', '']
+  R2: ['CO1 – PO2', '', '']
+  R3: ['CO2 – PO3', '', '']
+  R4: ['CO3 – PO5', '', '']
+  R5: ['CO4 – PO9', '', '']
+  R6: ['CO_ – PSO_', '', '']
+
+=== TABLE 8 (12 rows x 3 cols) ===
+  R0: ['PO', 'Graduate Attribute', 'Keywords for Mapping and Justification']
+  R1: ['PO1', 'Engineering Knowledge', 'Apply knowledge of mathematics, natural science, computing, engineering fundamentals and specialisation; conceptual models']
+  R2: ['PO2', 'Problem Analysis', 'Identify, formulate, review literature, analyse complex problems, first principles, substantiated conclusions, sustainable development']
+  R3: ['PO3', 'Design / Development of Solutions', 'Design systems, components or processes for specified needs; public health and safety, whole-life cost, net zero carbon, culture, society, environment']
+  R4: ['PO4', 'Conduct Investigations of Complex Problems', 'Research-based methods, design of experiments, data analysis and interpretation, synthesis of information, valid conclusions']
+  R5: ['PO5', 'Engineering Tool Usage', 'Create, select and apply techniques, resources, modern engineering and IT tools; prediction, modelling, simulation; recognise limitations']
+  R6: ['PO6', 'The Engineer and The World', 'Societal, environmental, health, safety, legal, cultural and economic impact; sustainability; UN SDGs']
+  R7: ['PO7', 'Ethics', 'Ethical principles, professional ethics and norms, human values, diversity and inclusion, national and international laws, IPR, data privacy']
+  R8: ['PO8', 'Individual and Collaborative Team Work', 'Function effectively as individual, member or leader; diverse, multidisciplinary, multicultural teams; collaboration']
+  R9: ['PO9', 'Communication', 'Communicate effectively and inclusively; comprehend and write reports, design documentation, presentations; clear instructions']
+  R10: ['PO10', 'Project Management and Finance', 'Engineering management principles, economic decision-making, planning, scheduling, costing, risk; manage projects as member or leader']
+  R11: ['PO11', 'Life-Long Learning', 'Recognise the need for independent learning, adaptability to new and emerging technologies, critical thinking, broadest context of technological change']
+
+=== TABLE 9 (3 rows x 2 cols) ===
+  R0: ['PSO', 'Programme Specific Outcome (copy from the department’s approved PSOs)']
+  R1: ['PSO1', '']
+  R2: ['PSO2', '']
+
+=== TABLE 10 (8 rows x 2 cols) ===
+  R0: ['Item', 'Details']
+  R1: ['Learning paradigm (Supervised / Unsupervised / Semi-supervised / Reinforcement)', '']
+  R2: ['Task type (Binary / Multi-class classification, Regression, Clustering, Forecasting, etc.)', '']
+  R3: ['Input features (X)', '']
+  R4: ['Target variable (y) and its type / range', '']
+  R5: ['Primary evaluation metric', '']
+  R6: ['Success criterion (e.g. F1-score ≥ 0.80 on the test set)', '']
+  R7: ['Baseline to beat (e.g. majority class, linear regression)', '']
+
+=== TABLE 11 (6 rows x 6 cols) ===
+  R0: ['S.No', 'Author(s) & Year', 'Dataset Used', 'Algorithm / Model', 'Metric & Reported Result', 'Limitations / Gap']
+  R1: ['1', '', '', '', '', '']
+  R2: ['2', '', '', '', '', '']
+  R3: ['3', '', '', '', '', '']
+  R4: ['4', '', '', '', '', '']
+  R5: ['5', '', '', '', '', '']
+
+=== TABLE 12 (6 rows x 3 cols) ===
+  R0: ['Source Type', 'Examples', 'What to Record']
+  R1: ['Primary data (preferred)', 'Survey or questionnaire (Google Forms), sensor / IoT readings, lab measurements, images captured by the team, institutional records used with permission', 'Collection method, period, location, sample size, consent']
+  R2: ['Research repositories', 'UCI Machine Learning Repository, OpenML, Zenodo, Mendeley Data, IEEE DataPort, PhysioNet (credentialed access)', 'DOI, version, original paper to cite']
+  R3: ['Government / open data', 'Open Government Data Platform India (data.gov.in), World Bank Open Data, national meteorological, pollution-board or census portals', 'Department or agency, licence, access date']
+  R4: ['Curated ML datasets', 'Hugging Face Datasets, TensorFlow Datasets, torchvision / scikit-learn built-in datasets (acceptable as a secondary or benchmark dataset only)', 'Dataset card, licence, original creators']
+  R5: ['Search tools', 'Google Dataset Search – to locate the original publisher of a dataset', 'Original source, not the mirror']
+
+=== TABLE 13 (8 rows x 2 cols) ===
+  R0: ['Item', 'Details']
+  R1: ['Dataset name', '']
+  R2: ['Source / repository and URL or DOI', '']
+  R3: ['Original creator / owner', '']
+  R4: ['Version and year', '']
+  R5: ['Licence / terms of use', '']
+  R6: ['Date of access or download', '']
+  R7: ['Citation number in References', '']
+
+=== TABLE 14 (10 rows x 2 cols) ===
+  R0: ['Item', 'Details']
+  R1: ['Number of instances (rows / images / records)', '']
+  R2: ['Number of features (input attributes)', '']
+  R3: ['Number and names of classes / range of target', '']
+  R4: ['Data types (numeric, categorical, text, image, time-series)', '']
+  R5: ['Missing values (count and % per feature)', '']
+  R6: ['Duplicate records', '']
+  R7: ['Class distribution (count and % per class)', '']
+  R8: ['File format and size', '']
+  R9: ['Time span covered (if temporal)', '']
+
+=== TABLE 15 (6 rows x 6 cols) ===
+  R0: ['S.No', 'Feature Name', 'Description', 'Type', 'Unit / Range', 'Role']
+  R1: ['1', '', '', '', '', 'Input']
+  R2: ['2', '', '', '', '', '']
+  R3: ['3', '', '', '', '', '']
+  R4: ['4', '', '', '', '', '']
+  R5: ['n', '', '', '', '', 'Target']
+
+=== TABLE 16 (1 rows x 1 cols) ===
+  R0: ['Insert the class distribution plot here']
+
+=== TABLE 17 (1 rows x 1 cols) ===
+  R0: ['Insert the correlation heatmap here']
+
+=== TABLE 18 (7 rows x 3 cols) ===
+  R0: ['Issue', 'Observation in this Dataset', 'Action Taken (see Chapter 4)']
+  R1: ['Missing values', '', '']
+  R2: ['Duplicates', '', '']
+  R3: ['Outliers', '', '']
+  R4: ['Class imbalance', '', '']
+  R5: ['Possible data leakage (features derived from the target, IDs, future data)', '', '']
+  R6: ['Sampling bias', '', '']
+
+=== TABLE 19 (1 rows x 1 cols) ===
+  R0: ['Insert the preprocessing pipeline diagram (raw data → cleaning → encoding → scaling → split) here']
+
+=== TABLE 20 (8 rows x 5 cols) ===
+  R0: ['S.No', 'Step', 'Technique Used', 'Reason', 'Shape After (rows × cols)']
+  R1: ['1', 'Handling missing values', 'e.g. median / mode imputation, row removal', '', '']
+  R2: ['2', 'Removing duplicates', '', '', '']
+  R3: ['3', 'Outlier treatment', 'e.g. IQR capping, z-score', '', '']
+  R4: ['4', 'Encoding categorical data', 'e.g. one-hot, label, ordinal', '', '']
+  R5: ['5', 'Feature scaling', 'e.g. StandardScaler, MinMaxScaler', '', '']
+  R6: ['6', 'Text / image / signal processing', 'e.g. tokenisation, TF-IDF, resizing, augmentation', '', '']
+  R7: ['7', 'Handling class imbalance', 'e.g. class weights, SMOTE (training set only)', '', '']
+
+=== TABLE 21 (4 rows x 4 cols) ===
+  R0: ['Subset', 'Ratio (%)', 'No. of Samples', 'Class Distribution / Target Range']
+  R1: ['Training', '', '', '']
+  R2: ['Validation', '', '', '']
+  R3: ['Test (held out)', '', '', '']
+
+=== TABLE 22 (1 rows x 1 cols) ===
+  R0: ['Insert the end-to-end workflow (data → preprocessing → training → tuning → evaluation → deployment) here']
+
+=== TABLE 23 (4 rows x 4 cols) ===
+  R0: ['Algorithm', 'Loss / Objective Function', 'Optimiser / Learning Method', 'Reason for Selection']
+  R1: ['Baseline:', '', '', '']
+  R2: ['Model 1:', '', '', '']
+  R3: ['Model 2:', '', '', '']
+
+=== TABLE 24 (6 rows x 5 cols) ===
+  R0: ['Layer', 'Type', 'Output Shape', 'Activation', 'No. of Parameters']
+  R1: ['1', 'Input', '', '–', '0']
+  R2: ['2', '', '', '', '']
+  R3: ['3', '', '', '', '']
+  R4: ['n', 'Output', '', '', '']
+  R5: ['Total trainable parameters', 'Total trainable parameters', 'Total trainable parameters', 'Total trainable parameters', '']
+
+=== TABLE 25 (5 rows x 4 cols) ===
+  R0: ['Hyperparameter', 'Search Space / Range', 'Selected Value', 'Tuning Method']
+  R1: ['e.g. learning rate', 'e.g. 0.001 – 0.1', '', 'e.g. GridSearchCV, 5-fold']
+  R2: ['', '', '', '']
+  R3: ['', '', '', '']
+  R4: ['', '', '', '']
+
+=== TABLE 26 (7 rows x 2 cols) ===
+  R0: ['Item', 'Details']
+  R1: ['Platform (local PC / Google Colab / lab server)', '']
+  R2: ['CPU / GPU and RAM', '']
+  R3: ['Operating system', '']
+  R4: ['Python version', '']
+  R5: ['Libraries and versions (NumPy, pandas, scikit-learn, TensorFlow / PyTorch, Matplotlib)', '']
+  R6: ['Random seed(s) used', '']
+
+=== TABLE 27 (10 rows x 2 cols) ===
+  R0: ['Item', 'Details']
+  R1: ['Loss function', '']
+  R2: ['Optimiser and learning rate (schedule, if any)', '']
+  R3: ['Batch size', '']
+  R4: ['Maximum epochs / max_iter', '']
+  R5: ['Convergence tolerance (tol) / stopping criterion', '']
+  R6: ['Early stopping (monitored metric, patience)', '']
+  R7: ['Regularisation (L1 / L2, dropout, max_depth, etc.)', '']
+  R8: ['Cross-validation folds', '']
+  R9: ['Total training time', '']
+
+=== TABLE 28 (1 rows x 1 cols) ===
+  R0: ['Insert the training and validation loss vs epoch / iteration plot here']
+
+=== TABLE 29 (1 rows x 1 cols) ===
+  R0: ['Insert the training and validation accuracy (or metric) vs epoch plot here']
+
+=== TABLE 30 (6 rows x 5 cols) ===
+  R0: ['Epoch / Iteration', 'Training Loss', 'Validation Loss', 'Training Metric', 'Validation Metric']
+  R1: ['1', '', '', '', '']
+  R2: ['', '', '', '', '']
+  R3: ['', '', '', '', '']
+  R4: ['', '', '', '', '']
+  R5: ['Final', '', '', '', '']
+
+=== TABLE 31 (6 rows x 2 cols) ===
+  R0: ['Item', 'Details']
+  R1: ['Converged at epoch / iteration', '']
+  R2: ['Final training loss and validation loss', '']
+  R3: ['Stopping reason (tolerance reached / early stopping / max epochs)', '']
+  R4: ['Effect of learning rate (if varied: too high → oscillation, too low → slow)', '']
+  R5: ['Convergence warnings and fix applied', '']
+
+=== TABLE 32 (1 rows x 1 cols) ===
+  R0: ['Insert the learning curve (score vs number of training samples) here']
+
+=== TABLE 33 (4 rows x 6 cols) ===
+  R0: ['Model', 'Training Score', 'Validation Score', 'Gap', 'Diagnosis', 'Action Taken']
+  R1: ['Baseline', '', '', '', '', '']
+  R2: ['Model 1', '', '', '', '', '']
+  R3: ['Model 2', '', '', '', '', '']
+
+=== TABLE 34 (1 rows x 1 cols) ===
+  R0: ['# Fix the random seed for reproducibility SEED = 42  # Split before any fitting to avoid data leakage X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=SEED)  # ---- add your pipeline, training and evaluation code here ----']
+
+=== TABLE 35 (5 rows x 4 cols) ===
+  R0: ['S.No', 'Task / Module', 'Description', 'Done by (Roll No.)']
+  R1: ['1', 'Data collection and EDA', '', '']
+  R2: ['2', 'Preprocessing and feature engineering', '', '']
+  R3: ['3', 'Model training and tuning', '', '']
+  R4: ['4', 'Evaluation, report and presentation', '', '']
+
+=== TABLE 36 (5 rows x 3 cols) ===
+  R0: ['Task', 'Metrics', 'Formula / Remark']
+  R1: ['Classification', 'Accuracy, Precision, Recall (Sensitivity), Specificity, F1-score, ROC-AUC, PR-AUC, MCC, Log-loss, Confusion matrix', 'Precision = TP/(TP+FP); Recall = TP/(TP+FN); F1 = 2PR/(P+R); state macro / weighted average for multi-class']
+  R2: ['Regression', 'MAE, MSE, RMSE, R², Adjusted R², MAPE', 'RMSE = √(Σ(y − ŷ)²/n); R² = 1 − SS_res/SS_tot; report in the units of the target']
+  R3: ['Clustering', 'Silhouette score, Davies–Bouldin index, Calinski–Harabasz index, ARI / NMI (if true labels exist)', 'Also show the elbow / silhouette plot used to select k']
+  R4: ['Others', 'IoU and mAP (object detection), BLEU / ROUGE (text generation), perplexity (language models), cumulative reward (RL)', 'Cite the definition used']
+
+=== TABLE 37 (4 rows x 3 cols) ===
+  R0: ['Metric', 'Formula', 'Why it is relevant to this problem']
+  R1: ['', '', '']
+  R2: ['', '', '']
+  R3: ['', '', '']
+
+=== TABLE 38 (5 rows x 7 cols) ===
+  R0: ['Model', 'Metric 1', 'Metric 2', 'Metric 3', 'Metric 4', 'Training Time (s)', 'Inference Time (ms / sample)']
+  R1: ['Baseline', '', '', '', '', '', '']
+  R2: ['Model 1', '', '', '', '', '', '']
+  R3: ['Model 2', '', '', '', '', '', '']
+  R4: ['Proposed (tuned)', '', '', '', '', '', '']
+
+=== TABLE 39 (1 rows x 1 cols) ===
+  R0: ['Insert the confusion matrix (classification) or residual plot and predicted-vs-actual plot (regression) here']
+
+=== TABLE 40 (1 rows x 1 cols) ===
+  R0: ['Insert the ROC curve with AUC value and / or PR curve here']
+
+=== TABLE 41 (5 rows x 5 cols) ===
+  R0: ['S.No', 'Work (from Table 2.1)', 'Dataset', 'Model', 'Reported Metric']
+  R1: ['1', '', '', '', '']
+  R2: ['2', '', '', '', '']
+  R3: ['3', '', '', '', '']
+  R4: ['–', 'This project', '', '', '']
+
+=== TABLE 42 (1 rows x 1 cols) ===
+  R0: ['Insert the feature importance / SHAP plot here']
+
+=== TABLE 43 (7 rows x 2 cols) ===
+  R0: ['Aspect', 'Discussion']
+  R1: ['Societal impact and intended users (PO6)', '']
+  R2: ['Risk of harm from wrong predictions (false positives vs false negatives)', '']
+  R3: ['Bias and fairness – performance across groups such as gender, age, region (PO7)', '']
+  R4: ['Data privacy, consent and licence compliance (PO7)', '']
+  R5: ['Environmental cost – training time, hardware used, energy considerations (PO6)', '']
+  R6: ['Relevant UN Sustainable Development Goal(s)', '']
+
+=== TABLE 44 (5 rows x 4 cols) ===
+  R0: ['S.No', 'Objective (from Section 1.4)', 'Achieved (Y / Partly / N)', 'Evidence (section, figure or metric)']
+  R1: ['1', '', '', '']
+  R2: ['2', '', '', '']
+  R3: ['3', '', '', '']
+  R4: ['4', '', '', '']
+
+=== TABLE 45 (9 rows x 6 cols) ===
+  R0: ['Criterion', 'Excellent (4)', 'Good (3)', 'Satisfactory (2)', 'Needs Improvement (1)', 'CO / PO']
+  R1: ['C1. Problem formulation and literature', 'ML task, metric and success criterion fixed; 5+ papers compared', 'Task and metric clear; 4 papers reviewed', 'Task vague; 2–3 papers, little analysis', 'Task undefined; no literature', 'CO__ / PO2, PO11']
+  R2: ['C2. Dataset collection and documentation', 'Primary or authoritative source; full provenance, licence and data dictionary', 'Authoritative source; minor gaps in documentation', 'Secondary mirror (e.g. Kaggle) with original source traced', 'Source unknown or undocumented', 'CO__ / PO4, PO7']
+  R3: ['C3. EDA and preprocessing', 'Insightful EDA; leakage-free pipeline; all quality issues handled', 'Good EDA; most issues handled', 'Basic plots; some issues ignored', 'No EDA or data leakage present', 'CO__ / PO4']
+  R4: ['C4. Model design and implementation', 'Baseline plus well-justified models; equations given; clean, commented code', 'Models justified; code works', 'Single model; weak justification', 'Model not working', 'CO__ / PO1, PO3, PO5']
+  R5: ['C5. Training and convergence analysis', 'Loss curves, convergence and over/underfitting correctly diagnosed and acted on; tuning done', 'Curves shown and explained', 'Curves shown without interpretation', 'No evidence of convergence', 'CO__ / PO4, PO5']
+  R6: ['C6. Evaluation and result analysis', 'Appropriate metrics on held-out test set; comparison, error analysis and interpretation', 'Appropriate metrics and comparison', 'Accuracy only or validation-set results only', 'Metrics wrong or missing', 'CO__ / PO4']
+  R7: ['C7. Report, presentation and viva', 'Format followed; clear; answers all questions', 'Minor errors; answers most questions', 'Several errors; answers few', 'Cannot explain the work', 'CO__ / PO9']
+  R8: ['C8. Teamwork, ethics and project management', 'Equal contribution; log maintained; responsible-AI issues addressed', 'Good coordination; ethics discussed briefly', 'Uneven contribution; ethics superficial', 'Poor coordination; ethics ignored', 'CO__ / PO6, PO8, PO10']
+
+=== TABLE 46 (5 rows x 12 cols) ===
+  R0: ['Roll No.', 'Name', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'Total (32)', 'Scaled (10)']
+  R1: ['', '', '', '', '', '', '', '', '', '', '', '']
+  R2: ['', '', '', '', '', '', '', '', '', '', '', '']
+  R3: ['', '', '', '', '', '', '', '', '', '', '', '']
+  R4: ['', '', '', '', '', '', '', '', '', '', '', '']
+
+=== TABLE 47 (4 rows x 1 cols) ===
+  R0: ['Signature']
+  R1: ['Course Coordinator']
+  R2: ['Name: ________________']
+  R3: ['Date: ________________']
+
+=== TABLE 48 (5 rows x 2 cols) ===
+  R0: ['Question', 'Response']
+  R1: ['Which ML concepts did I understand better through this project?', '']
+  R2: ['What was the hardest problem (data, convergence, overfitting) and how was it solved?', '']
+  R3: ['What new tool or library did I learn on my own?', '']
+  R4: ['What would I do differently next time?', '']
+
+=== TABLE 49 (5 rows x 2 cols) ===
+  R0: ['Question', 'Response']
+  R1: ['Which ML concepts did I understand better through this project?', '']
+  R2: ['What was the hardest problem (data, convergence, overfitting) and how was it solved?', '']
+  R3: ['What new tool or library did I learn on my own?', '']
+  R4: ['What would I do differently next time?', '']
+
+=== TABLE 50 (12 rows x 2 cols) ===
+  R0: ['Item', 'Specification']
+  R1: ['Paper size and margins', 'A4; use this template as given (institution header on every page)']
+  R2: ['Font', 'Times New Roman throughout; code in Courier New 9.5–10 pt']
+  R3: ['Font sizes', 'Chapter titles 16 pt bold; section headings 13 pt bold; body text 12 pt; tables 10–11 pt']
+  R4: ['Line spacing', '1.5 for body text; single within tables']
+  R5: ['Figures and plots', 'Numbered chapter-wise (Fig. 6.1), caption below; axes labelled with units; legend shown; readable when printed']
+  R6: ['Tables', 'Numbered chapter-wise (Table 7.3), caption above']
+  R7: ['Results', 'Report numbers to 3–4 decimal places, from the test set, with the same seed as in the code']
+  R8: ['Page numbering', 'Inserted automatically in the footer of this template']
+  R9: ['Length', '25–35 pages excluding appendices and source code']
+  R10: ['Citations', 'IEEE style, numbered in square brackets, e.g. [1]; cite every dataset and library']
+  R11: ['Guidance notes', 'Delete all grey [Guidance: …] notes before submission']
+

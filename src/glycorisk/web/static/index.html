@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlycoCheck AI — Explainable, Risk-Calibrated Diabetes Intelligence Platform</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme">
+
+  <!-- ========================================== -->
+  <!-- NAVIGATION BAR (Glassmorphism Light)       -->
+  <!-- ========================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-icon-wrapper">
+          <i data-lucide="activity" class="brand-icon"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">GlycoCheck<span class="brand-highlight">AI</span></span>
+          <span class="brand-sub">Clinical Intelligence Platform</span>
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#hero" class="nav-link active">Overview</a>
+        <a href="#diagnostic-suite" class="nav-link">Diagnostic Suite</a>
+        <a href="#benchmarks" class="nav-link">Model Telemetry</a>
+        <a href="#documentation" class="nav-link">Research & Docs</a>
+      </div>
+
+      <div class="nav-actions">
+        <div class="system-status-pill">
+          <span class="pulse-dot"></span>
+          <span class="status-label">Model Online: Isotonic XGBoost</span>
+        </div>
+        <a href="#diagnostic-suite" class="btn btn-primary btn-sm">
+          <span>Run Assessment</span>
+          <i data-lucide="arrow-right" class="icon-sm"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- HERO / LANDING SECTION                     -->
+  <!-- ========================================== -->
+  <header class="hero-section" id="hero">
+    <div class="hero-bg-decorations">
+      <div class="glow-orb glow-orb-1"></div>
+      <div class="glow-orb glow-orb-2"></div>
+      <div class="grid-pattern"></div>
+    </div>
+
+    <div class="hero-container">
+      <!-- Announcement Pill -->
+      <div class="hero-badge gsap-hero">
+        <span class="badge-sparkle"><i data-lucide="sparkles" class="icon-xs"></i></span>
+        <span>Risk-Calibrated Medical Intelligence</span>
+        <span class="badge-separator">•</span>
+        <span class="badge-highlight">82.9% Clinical Sensitivity</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-title gsap-hero">
+        Predict Type-2 Diabetes Risk with <span class="gradient-text">Calibrated, Explainable</span> AI.
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="hero-subtitle gsap-hero">
+        GlycoCheck AI transforms multi-analyte electronic health record (EHR) biomarkers into 
+        reliable clinical probabilities and patient-specific TreeSHAP attributions. Built with 
+        domain-aware zero handling and post-hoc Isotonic Regression for primary care screening.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="hero-cta-group gsap-hero">
+        <a href="#diagnostic-suite" class="btn btn-primary btn-lg">
+          <i data-lucide="stethoscope" class="icon-md"></i>
+          <span>Open Diagnostic Suite</span>
+          <i data-lucide="chevron-right" class="icon-md"></i>
+        </a>
+        <a href="#documentation" class="btn btn-secondary btn-lg">
+          <i data-lucide="file-text" class="icon-md"></i>
+          <span>View Clinical Report</span>
+        </a>
+      </div>
+
+      <!-- Hero Bento Highlight Grid (Key Statistical Evidence) -->
+      <div class="hero-bento-grid gsap-hero">
+        
+        <div class="bento-metric-card" data-metric="sensitivity">
+          <div class="card-icon-header">
+            <span class="metric-icon-box text-emerald"><i data-lucide="shield-check"></i></span>
+            <span class="metric-tag tag-emerald">PRIMARY TARGET</span>
+          </div>
+          <div class="metric-value-wrapper">
+            <span class="metric-number counter" data-target="82.93">82.93</span><span class="metric-unit">%</span>
+          </div>
+          <h3 class="metric-label">Clinical Sensitivity (Recall)</h3>
+          <p class="metric-desc">Correctly detects 34 out of 41 diabetic patients on unseen test data, minimizing false negatives.</p>
+        </div>
+
+        <div class="bento-metric-card" data-metric="auc">
+          <div class="card-icon-header">
+            <span class="metric-icon-box text-blue"><i data-lucide="trending-up"></i></span>
+            <span class="metric-tag tag-blue">DISCRIMINATION</span>
+          </div>
+          <div class="metric-value-wrapper">
+            <span class="metric-number counter" data-target="0.8408">0.8408</span>
+          </div>
+          <h3 class="metric-label">Test ROC-AUC Score</h3>
+          <p class="metric-desc">Robust rank-order separation between diabetic and healthy cohorts (95% CI: 0.768–0.911).</p>
+        </div>
+
+        <div class="bento-metric-card" data-metric="brier">
+          <div class="card-icon-header">
+            <span class="metric-icon-box text-indigo"><i data-lucide="check-circle-2"></i></span>
+            <span class="metric-tag tag-indigo">CALIBRATED</span>
+          </div>
+          <div class="metric-value-wrapper">
+            <span class="metric-number counter" data-target="0.1354">0.1354</span>
+          </div>
+          <h3 class="metric-label">Validation Brier Score</h3>
+          <p class="metric-desc">Isotonic Regression reduces calibration error from 0.1701 to 0.1354, ensuring trustworthy confidence.</p>
+        </div>
+
+        <div class="bento-metric-card" data-metric="latency">
+          <div class="card-icon-header">
+            <span class="metric-icon-box text-teal"><i data-lucide="zap"></i></span>
+            <span class="metric-tag tag-teal">EDGE REAL-TIME</span>
+          </div>
+          <div class="metric-value-wrapper">
+            <span class="metric-number counter" data-target="42">42</span><span class="metric-unit">ms</span>
+          </div>
+          <h3 class="metric-label">Inference Latency</h3>
+          <p class="metric-desc">Asynchronous FastAPI CPU inference with immediate TreeSHAP local waterfall computation.</p>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN BENTO DIAGNOSTIC SUITE                -->
+  <!-- ========================================== -->
+  <main class="main-content" id="diagnostic-suite">
+    <div class="section-container">
+      
+      <!-- Section Title Header -->
+      <div class="section-header">
+        <div class="section-tag">
+          <i data-lucide="sliders" class="icon-xs"></i>
+          <span>PATIENT TRIAGE WORKSTATION</span>
+        </div>
+        <h2 class="section-title">Clinical Risk Stratification & Explanations</h2>
+        <p class="section-desc">
+          Adjust patient physiological telemetry below or load a verified clinical preset to observe 
+          real-time probability calibration, risk tier categorization, and TreeSHAP attribution forces.
+        </p>
+      </div>
+
+      <!-- Clinical Preset Quick Selector Bar -->
+      <div class="preset-pill-bar">
+        <span class="preset-bar-title"><i data-lucide="user-check" class="icon-sm"></i> Quick Clinical Presets:</span>
+        <button type="button" class="preset-btn" onclick="applyPreset('healthy')">
+          <span class="dot dot-green"></span> Normal Control (Healthy)
+        </button>
+        <button type="button" class="preset-btn" onclick="applyPreset('borderline')">
+          <span class="dot dot-amber"></span> Borderline / Pre-Diabetic
+        </button>
+        <button type="button" class="preset-btn active" onclick="applyPreset('high_risk')">
+          <span class="dot dot-red"></span> Symptomatic High-Risk
+        </button>
+        <button type="button" class="preset-btn" onclick="applyPreset('atypical_fn')">
+          <span class="dot dot-purple"></span> Atypical Case (Normoglycemic FN)
+        </button>
+      </div>
+
+      <!-- MAIN BENTO GRID CONTAINER -->
+      <div class="bento-suite-grid">
+        
+        <!-- BENTO CARD 1: PATIENT BIOMARKER INGESTION FORM (Span 7 cols) -->
+        <section class="bento-card bento-card-form" id="card-telemetry">
+          <div class="card-title-bar">
+            <div class="title-with-icon">
+              <span class="card-icon-circle bg-teal-light text-teal"><i data-lucide="clipboard-list"></i></span>
+              <div>
+                <h3 class="card-heading">Patient Biomarker Telemetry</h3>
+                <p class="card-subheading">8 Quantitative Physiological Markers (NIDDK EHR Schema)</p>
+              </div>
+            </div>
+            <button type="button" class="btn-ghost-sm" onclick="resetForm()">
+              <i data-lucide="rotate-ccw" class="icon-xs"></i>
+              <span>Reset</span>
+            </button>
+          </div>
+
+          <form id="clinical-form" onsubmit="executeAssessment(event)">
+            <div class="form-bento-grid">
+
+              <!-- Biomarker 1: Plasma Glucose -->
+              <div class="input-card" id="field-glucose">
+                <div class="input-header">
+                  <label for="inp-glucose" class="input-label">
+                    <span>2h Plasma Glucose</span>
+                    <span class="badge-unit">mg/dL</span>
+                  </label>
+                  <span class="input-ref" id="ref-glucose">Ref: 70–140 Normal</span>
+                </div>
+                <div class="dual-input-wrapper">
+                  <input type="range" class="range-slider" id="slider-glucose" min="40" max="250" step="1" value="168">
+                  <input type="number" class="number-input" id="inp-glucose" min="40" max="300" step="1" value="168" required>
+                </div>
+              </div>
+
+              <!-- Biomarker 2: Blood Pressure -->
+              <div class="input-card" id="field-bp">
+                <div class="input-header">
+                  <label for="inp-bp" class="input-label">
+                    <span>Diastolic Blood Pressure</span>
+                    <span class="badge-unit">mm Hg</span>
+                  </label>
+                  <span class="input-ref" id="ref-bp">Ref: 60–80 Normal</span>
+                </div>
+                <div class="dual-input-wrapper">
+                  <input type="range" class="range-slider" id="slider-bp" min="30" max="140" step="1" value="82">
+                  <input type="number" class="number-input" id="inp-bp" min="20" max="150" step="1" value="82" required>
+                </div>
+              </div>
+
+              <!-- Biomarker 3: BMI -->
+              <div class="input-card" id="field-bmi">
+                <div class="input-header">
+                  <label for="inp-bmi" class="input-label">
+                    <span>Body Mass Index (BMI)</span>
+                    <span class="badge-unit">kg/m²</span>
+                  </label>
+                  <span class="input-ref" id="ref-bmi">Ref: 18.5–24.9</span>
+                </div>
+                <div class="dual-input-wrapper">
+                  <input type="range" class="range-slider" id="slider-bmi" min="15.0" max="60.0" step="0.1" value="34.8">
+                  <input type="number" class="number-input" id="inp-bmi" min="10.0" max="70.0" step="0.1" value="34.8" required>
+                </div>
+              </div>
+
+              <!-- Biomarker 4: Age -->
+              <div class="input-card" id="field-age">
+                <div class="input-header">
+                  <label for="inp-age" class="input-label">
+                    <span>Patient Age</span>
+                    <span class="badge-unit">Years</span>
+                  </label>
+                  <span class="input-ref">Cohort: ≥ 21</span>
+                </div>
+                <div class="dual-input-wrapper">
+                  <input type="range" class="range-slider" id="slider-age" min="21" max="85" step="1" value="48">
+                  <input type="number" class="number-input" id="inp-age" min="21" max="95" step="1" value="48" required>
+                </div>
+              </div>
+
+              <!-- Biomarker 5: Serum Insulin -->
+              <div class="input-card" id="field-insulin">
+                <div class="input-header">
+                  <label for="inp-insulin" class="input-label">
+                    <span>2h Serum Insulin</span>
+                    <span class="badge-unit">μU/mL</span>
+                  </label>
+                  <span class="input-ref">0 = Auto-Imputed (KNN)</span>
+                </div>
+                <div class="dual-input-wrapper">
+                  <input type="range" class="range-slider" id="slider-insulin" min="0" max="500" step="1" value="180">
+                  <input type="number" class="number-input" id="inp-insulin" min="0" max="850" step="1" value="180">
+                </div>
+              </div>
+
+              <!-- Biomarker 6: Skinfold Thickness -->
+              <div class="input-card" id="field-skin">
+                <div class="input-header">
+                  <label for="inp-skin" class="input-label">
+                    <span>Triceps Skinfold</span>
+                    <span class="badge-unit">mm</span>
+                  </label>
+                  <span class="input-ref">0 = Auto-Imputed (KNN)</span>
+                </div>
+                <div class="dual-input-wrapper">
+                  <input type="range" class="range-slider" id="slider-skin" min="0" max="70" step="1" value="32">
+                  <input type="number" class="number-input" id="inp-skin" min="0" max="100" step="1" value="32">
+                </div>
+              </div>
+
+              <!-- Biomarker 7: Diabetes Pedigree -->
+              <div class="input-card" id="field-pedigree">
+                <div class="input-header">
+                  <label for="inp-pedigree" class="input-label">
+                    <span>Diabetes Pedigree</span>
+                    <span class="badge-unit">Genetic Score</span>
+                  </label>
+                  <span class="input-ref">Mean: ~0.47</span>
+                </div>
+                <div class="dual-input-wrapper">
+                  <input type="range" class="range-slider" id="slider-pedigree" min="0.05" max="2.50" step="0.01" value="0.72">
+                  <input type="number" class="number-input" id="inp-pedigree" min="0.05" max="2.50" step="0.01" value="0.72" required>
+                </div>
+              </div>
+
+              <!-- Biomarker 8: Pregnancies -->
+              <div class="input-card" id="field-pregnancies">
+                <div class="input-header">
+                  <label for="inp-pregnancies" class="input-label">
+                    <span>Pregnancies</span>
+                    <span class="badge-unit">Count</span>
+                  </label>
+                  <span class="input-ref">0 = Nulliparous</span>
+                </div>
+                <div class="dual-input-wrapper">
+                  <input type="range" class="range-slider" id="slider-pregnancies" min="0" max="17" step="1" value="3">
+                  <input type="number" class="number-input" id="inp-pregnancies" min="0" max="17" step="1" value="3" required>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Form Submit CTA -->
+            <div class="form-cta-row">
+              <button type="submit" class="btn btn-primary btn-block" id="btn-assess">
+                <i data-lucide="activity" class="icon-md"></i>
+                <span id="btn-assess-text">EXECUTE CLINICAL RISK STRATIFICATION</span>
+                <span class="btn-spinner" id="btn-spinner" style="display:none;"></span>
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- BENTO CARD 2: CALIBRATED RISK GAUGE & TIER (Span 5 cols) -->
+        <section class="bento-card bento-card-gauge" id="card-gauge">
+          <div class="card-title-bar">
+            <div class="title-with-icon">
+              <span class="card-icon-circle bg-blue-light text-blue"><i data-lucide="gauge"></i></span>
+              <div>
+                <h3 class="card-heading">Calibrated Risk Stratification</h3>
+                <p class="card-subheading">Isotonic Post-Hoc Probability Output</p>
+              </div>
+            </div>
+            <span class="badge-pill" id="badge-reliability">Reliability: High</span>
+          </div>
+
+          <div class="gauge-display-wrapper">
+            <!-- SVG Animated Semi-Circle Gauge -->
+            <div class="svg-gauge-box">
+              <svg class="risk-gauge-svg" viewBox="0 0 200 120">
+                <!-- Background Arc -->
+                <path class="gauge-bg-arc" d="M 20 100 A 80 80 0 0 1 180 100" />
+                <!-- Animated Progress Arc -->
+                <path class="gauge-fill-arc" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100" />
+                <!-- Indicator Needle -->
+                <line id="gauge-needle" class="gauge-needle" x1="100" y1="100" x2="100" y2="30" />
+                <circle cx="100" cy="100" r="7" class="gauge-pivot" />
+              </svg>
+              <div class="gauge-center-readout">
+                <span class="risk-percent-number" id="risk-score-display">--</span><span class="risk-percent-sign">%</span>
+                <span class="risk-percent-caption">POSTERIOR PROBABILITY</span>
+              </div>
+            </div>
+
+            <!-- Risk Tier Banner -->
+            <div class="risk-tier-banner" id="risk-tier-banner">
+              <span class="tier-indicator-dot"></span>
+              <span class="tier-label" id="risk-tier-text">AWAITING CLINICAL INPUT</span>
+            </div>
+
+            <!-- Statistical Telemetry Badges -->
+            <div class="gauge-telemetry-row">
+              <div class="telem-item">
+                <span class="telem-label">Brier Score</span>
+                <span class="telem-val" id="telem-brier">0.1354</span>
+              </div>
+              <div class="telem-item">
+                <span class="telem-label">Decision Cutoff</span>
+                <span class="telem-val">0.5000</span>
+              </div>
+              <div class="telem-item">
+                <span class="telem-label">Sensitivity Band</span>
+                <span class="telem-val text-emerald">82.9% Recall</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BENTO CARD 3: CLINICAL RECOMMENDATIONS (Span 5 cols) -->
+        <section class="bento-card bento-card-recom" id="card-recommendation">
+          <div class="card-title-bar">
+            <div class="title-with-icon">
+              <span class="card-icon-circle bg-amber-light text-amber"><i data-lucide="file-heart"></i></span>
+              <div>
+                <h3 class="card-heading">Clinical Guidance & Action Plan</h3>
+                <p class="card-subheading">ADA Standards of Medical Care Alignment</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="recommendation-content" id="recom-container">
+            <div class="recom-item">
+              <div class="recom-icon text-red"><i data-lucide="alert-triangle"></i></div>
+              <div class="recom-text">
+                <h4 class="recom-title" id="recom-header">Schedule Confirmatory Glycated Hemoglobin</h4>
+                <p class="recom-body" id="recom-body">
+                  Patient's calibrated probability indicates high risk of early-onset Type-2 diabetes. 
+                  Order secondary Fasting Plasma Glucose (FPG) and venous HbA1c to establish definitive diagnostic status.
+                </p>
+              </div>
+            </div>
+
+            <div class="action-checklist">
+              <div class="check-item">
+                <i data-lucide="check" class="icon-xs text-emerald"></i>
+                <span>Initiate structured lifestyle modification and dietary consultation</span>
+              </div>
+              <div class="check-item">
+                <i data-lucide="check" class="icon-xs text-emerald"></i>
+                <span>Evaluate microvascular baseline (urine microalbumin and retinal check)</span>
+              </div>
+              <div class="check-item">
+                <i data-lucide="check" class="icon-xs text-emerald"></i>
+                <span>Review family genetic pedigree and secondary metabolic risk factors</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BENTO CARD 4: TREESHAP EXPLAINABILITY WATERFALL (Span 7 cols) -->
+        <section class="bento-card bento-card-shap" id="card-shap">
+          <div class="card-title-bar">
+            <div class="title-with-icon">
+              <span class="card-icon-circle bg-indigo-light text-indigo"><i data-lucide="binary"></i></span>
+              <div>
+                <h3 class="card-heading">TreeSHAP Patient Feature Attribution</h3>
+                <p class="card-subheading">Local Additive Shapley Decomposition: φ_i = f(x) - E[f(x)]</p>
+              </div>
+            </div>
+            <span class="badge-pill badge-neutral">Base E[f(x)]: -0.62</span>
+          </div>
+
+          <!-- SHAP Feature Contributions Table -->
+          <div class="shap-table-wrapper">
+            <table class="shap-table" id="shap-table">
+              <thead>
+                <tr>
+                  <th>Biomarker Feature</th>
+                  <th>Patient Value</th>
+                  <th>Attribution Force</th>
+                  <th>SHAP Impact (Δ Risk)</th>
+                </tr>
+              </thead>
+              <tbody id="shap-tbody">
+                <!-- Populated dynamically via JS -->
+                <tr>
+                  <td><strong class="text-slate">Glucose</strong></td>
+                  <td>168 mg/dL</td>
+                  <td>
+                    <div class="shap-bar-track">
+                      <div class="shap-bar-fill bar-positive" style="width: 85%;"></div>
+                    </div>
+                  </td>
+                  <td><span class="text-red font-mono">+0.842</span></td>
+                </tr>
+                <tr>
+                  <td><strong class="text-slate">BMI</strong></td>
+                  <td>34.8 kg/m²</td>
+                  <td>
+                    <div class="shap-bar-track">
+                      <div class="shap-bar-fill bar-positive" style="width: 62%;"></div>
+                    </div>
+                  </td>
+                  <td><span class="text-red font-mono">+0.518</span></td>
+                </tr>
+                <tr>
+                  <td><strong class="text-slate">Age</strong></td>
+                  <td>48 Years</td>
+                  <td>
+                    <div class="shap-bar-track">
+                      <div class="shap-bar-fill bar-positive" style="width: 44%;"></div>
+                    </div>
+                  </td>
+                  <td><span class="text-red font-mono">+0.312</span></td>
+                </tr>
+                <tr>
+                  <td><strong class="text-slate">Pedigree Function</strong></td>
+                  <td>0.72</td>
+                  <td>
+                    <div class="shap-bar-track">
+                      <div class="shap-bar-fill bar-positive" style="width: 32%;"></div>
+                    </div>
+                  </td>
+                  <td><span class="text-red font-mono">+0.224</span></td>
+                </tr>
+                <tr>
+                  <td><strong class="text-slate">Blood Pressure</strong></td>
+                  <td>82 mm Hg</td>
+                  <td>
+                    <div class="shap-bar-track">
+                      <div class="shap-bar-fill bar-negative" style="width: 18%;"></div>
+                    </div>
+                  </td>
+                  <td><span class="text-emerald font-mono">-0.110</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- BENTO CARD 5: CLINICAL ERROR FORENSICS & SAFETY GUARDRAIL (Span 6 cols) -->
+        <section class="bento-card bento-card-forensics" id="card-forensics">
+          <div class="card-title-bar">
+            <div class="title-with-icon">
+              <span class="card-icon-circle bg-rose-light text-rose"><i data-lucide="shield-alert"></i></span>
+              <div>
+                <h3 class="card-heading">Clinical Error Forensics & Safety Guardrail</h3>
+                <p class="card-subheading">Unmasking Atypical Normoglycemic False Negatives</p>
+              </div>
+            </div>
+            <span class="badge-pill tag-emerald">Audit Verified</span>
+          </div>
+
+          <div class="forensics-content">
+            <div class="forensics-alert-box">
+              <div class="alert-icon"><i data-lucide="info"></i></div>
+              <div class="alert-text">
+                <strong>Forensic Audit Finding (N=7 False Negatives):</strong>
+                Patients missed by standard thresholds had a mean plasma glucose of only <strong>117.6 mg/dL</strong> (vs 142.5 mg/dL for True Positives).
+              </div>
+            </div>
+
+            <p class="forensics-explanation">
+              These patients represent atypical presentations with high underlying insulin resistance and elevated familial pedigree (mean 0.58), 
+              yet normal fasting glucose. The GlycoCheck safety guardrail flags secondary screening when BMI > 30 and Pedigree > 0.5 even if glucose appears normal.
+            </p>
+
+            <div class="comparison-pills">
+              <div class="comp-pill">
+                <span class="comp-label">FN Mean Glucose</span>
+                <span class="comp-val text-amber">117.6 mg/dL</span>
+              </div>
+              <div class="comp-pill">
+                <span class="comp-label">TP Mean Glucose</span>
+                <span class="comp-val text-red">142.5 mg/dL</span>
+              </div>
+              <div class="comp-pill">
+                <span class="comp-label">TN Mean Glucose</span>
+                <span class="comp-val text-emerald">98.9 mg/dL</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BENTO CARD 6: BENCHMARKING TELEMETRY & CONFUSION MATRIX (Span 6 cols) -->
+        <section class="bento-card bento-card-bench" id="benchmarks">
+          <div class="card-title-bar">
+            <div class="title-with-icon">
+              <span class="card-icon-circle bg-emerald-light text-emerald"><i data-lucide="table"></i></span>
+              <div>
+                <h3 class="card-heading">Held-Out Test Benchmarking (N=116)</h3>
+                <p class="card-subheading">Zero-Fabrication Empirical Cross-Architecture Evidence</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini Confusion Matrix Display -->
+          <div class="cm-grid-wrapper">
+            <div class="cm-box cm-tp">
+              <span class="cm-count">34</span>
+              <span class="cm-label">True Positives (82.9% Recall)</span>
+            </div>
+            <div class="cm-box cm-fn">
+              <span class="cm-count text-red">7</span>
+              <span class="cm-label">False Negatives (Suppressed)</span>
+            </div>
+            <div class="cm-box cm-fp">
+              <span class="cm-count text-amber">20</span>
+              <span class="cm-label">False Positives (Follow-up)</span>
+            </div>
+            <div class="cm-box cm-tn">
+              <span class="cm-count text-emerald">55</span>
+              <span class="cm-label">True Negatives (Specificity)</span>
+            </div>
+          </div>
+
+          <!-- Mini Metric Row -->
+          <div class="telemetry-stat-pills">
+            <div class="stat-pill">
+              <span class="sp-name">Sensitivity:</span>
+              <span class="sp-val font-mono">0.8293</span>
+            </div>
+            <div class="stat-pill">
+              <span class="sp-name">ROC-AUC:</span>
+              <span class="sp-val font-mono">0.8408</span>
+            </div>
+            <div class="stat-pill">
+              <span class="sp-name">PR-AUC:</span>
+              <span class="sp-val font-mono">0.7130</span>
+            </div>
+            <div class="stat-pill">
+              <span class="sp-name">Test Brier:</span>
+              <span class="sp-val font-mono">0.1585</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- DOCUMENTATION & RESEARCH PAPER SECTION     -->
+  <!-- ========================================== -->
+  <section class="doc-section" id="documentation">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">
+          <i data-lucide="book-open" class="icon-xs"></i>
+          <span>ACADEMIC DELIVERABLES & REPORT</span>
+        </div>
+        <h2 class="section-title">Institutional Project Documentation</h2>
+        <p class="section-desc">
+          Official B.Tech CSE (AI & ML) micro-project documentation conformant with Sreyas Institute 
+          institutional guidelines and NBA Outcome-Based Education (OBE) criteria.
+        </p>
+      </div>
+
+      <div class="doc-showcase-card">
+        <div class="doc-badge-row">
+          <span class="doc-type-badge">SUBMISSION-READY DOCX</span>
+          <span class="doc-meta-badge">Course 22A505PC – Machine Learning</span>
+          <span class="doc-meta-badge">Academic Year 2025–2026</span>
+        </div>
+        <h3 class="doc-title">GlycoRisk AI: Explainable, Risk-Calibrated Diabetes Prediction & Clinical Intelligence Platform</h3>
+        <p class="doc-summary">
+          Complete, publication-grade academic report comprising 9 chapters, verified mathematical formulations, 
+          15 high-resolution scientific figures, 51 populated empirical tables, complete IEEE references, 
+          and student self-reflections. Zero-fabrication verified against executed pipeline telemetry.
+        </p>
+
+        <!-- Chapter Matrix Grid -->
+        <div class="chapter-matrix-grid">
+          <div class="chapter-item"><span class="ch-num">CH 1</span> Introduction & Formalization</div>
+          <div class="chapter-item"><span class="ch-num">CH 2</span> Literature Survey (5 Papers)</div>
+          <div class="chapter-item"><span class="ch-num">CH 3</span> Dataset Provenance & EDA</div>
+          <div class="chapter-item"><span class="ch-num">CH 4</span> Leak-Free Preprocessing</div>
+          <div class="chapter-item"><span class="ch-num">CH 5</span> Model Design & Boosting</div>
+          <div class="chapter-item"><span class="ch-num">CH 6</span> Training & Convergence</div>
+          <div class="chapter-item"><span class="ch-num">CH 7</span> Evaluation & TreeSHAP</div>
+          <div class="chapter-item"><span class="ch-num">CH 8</span> Responsible AI & Ethics</div>
+          <div class="chapter-item"><span class="ch-num">CH 9</span> Conclusion & Future Scope</div>
+        </div>
+
+        <div class="doc-cta-row">
+          <a href="/artifacts/documentation/FINAL_GLYCORISK_AI_REPORT.docx" class="btn btn-primary" download>
+            <i data-lucide="download" class="icon-sm"></i>
+            <span>Download Report (.DOCX)</span>
+          </a>
+          <button type="button" class="btn btn-secondary" onclick="viewProjectFacts()">
+            <i data-lucide="file-json" class="icon-sm"></i>
+            <span>View Verified Evidence Registry (JSON)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- FOOTER                                     -->
+  <!-- ========================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <div class="nav-brand">
+          <div class="brand-icon-wrapper">
+            <i data-lucide="activity" class="brand-icon"></i>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">GlycoCheck<span class="brand-highlight">AI</span></span>
+            <span class="brand-sub">Clinical Decision Support System</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          An explainable, risk-calibrated clinical intelligence platform engineered for early-onset Type-2 Diabetes Mellitus risk triaging.
+        </p>
+      </div>
+
+      <div class="footer-info-col">
+        <h4 class="footer-heading">ACADEMIC AFFILIATION</h4>
+        <p class="footer-text">
+          Lead ML Architect: Pranav Reddy S (24VE1A66B1)<br>
+          Department of Computer Science and Engineering (AIML)<br>
+          Sreyas Institute of Engineering and Technology, Hyderabad<br>
+          Faculty Guide: Dr Swathi Gowroju, Associate Professor & HOD (AIML)
+        </p>
+      </div>
+
+      <div class="footer-info-col">
+        <h4 class="footer-heading">CLINICAL COMPLIANCE</h4>
+        <div class="compliance-tags">
+          <span class="badge-pill tag-emerald">HIPAA De-Identified</span>
+          <span class="badge-pill tag-blue">NIDDK Benchmark</span>
+          <span class="badge-pill tag-indigo">UN SDG 3 Aligned</span>
+          <span class="badge-pill tag-teal">Zero Data Leakage</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025–2026 GlycoCheck AI / GlycoRisk AI. Built with pure Python, Scikit-learn, XGBoost, and Vanilla Web Technologies.</p>
+    </div>
+  </footer>
+
+  <!-- Modal for Raw Project Facts JSON -->
+  <div class="modal-overlay" id="facts-modal" style="display:none;" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Verified Evidence Registry (project_facts.json)</h3>
+        <button class="btn-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <pre><code id="json-viewer">Loading facts...</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>

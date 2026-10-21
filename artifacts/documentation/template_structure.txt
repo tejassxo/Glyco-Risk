@@ -1,0 +1,181 @@
+P0 [Normal]: Department of CSE (Artificial Intelligence& Machine Learning)
+P1 [Normal]: MICRO PROJECT REPORT
+P2 [Normal]: on
+P3 [Normal]: “ TITLE OF THE COURSE END PROJECT ”
+P4 [Normal]: Submitted in partial fulfilment of the requirements of the course
+P5 [Normal]: Course Code  –Course Name
+P6 [Normal]: B.Tech  _______ Year  _____ Semester  |  Section ________
+P7 [Normal]: Academic Year 20___ – 20___   |   Regulation ________
+P8 [Normal]: Submitted by
+P10 [Normal]: Under the Guidance of
+P11 [Normal]: << Name of the Faculty Guide >>
+P12 [Normal]: << Designation >>, Department of CSE (AI & ML)
+P13 [Normal]: Month, Year of Submission: ____________
+P14 [Heading 1]: CERTIFICATE
+P17 [Normal]: This is to certify that the micro project entitled “____________________________” is a bonafide work carried out by the 
+P19 [Normal]: Marks awarded: ______ / 10          Evaluation date: ____________
+P21 [Heading 1]: DECLARATION
+P22 [Normal]: We hereby declare that the micro project report entitled “______________________________” submitted to the Department of
+P24 [Normal]: Place: Hyderabad                                                                    Date: ____________
+P25 [Heading 2]: ACKNOWLEDGEMENT
+P26 [Normal]: [Guidance: Thank the guide, course coordinator, HoD, Principal, management and lab staff in 4–6 sentences.]
+P27 [Normal]: ________________________________________________________________________________
+P28 [Normal]: ________________________________________________________________________________
+P29 [Normal]: ________________________________________________________________________________
+P30 [Normal]: ________________________________________________________________________________
+P31 [Normal]: ________________________________________________________________________________
+P32 [Heading 1]: ABSTRACT
+P33 [Normal]: [Guidance: 150–250 words in a single paragraph: the problem, the method used, the tools, the key result and its signific
+P51 [Normal]: Keywords: ______________, ______________, ______________, ______________
+P52 [Heading 1]: TABLE OF CONTENTS
+P54 [Normal]: [Guidance: Add a List of Figures and a List of Tables on the next page if the report has more than three of each.]
+P55 [Heading 1]: OUTCOME MAPPING (CO – PO – PSO)
+P56 [Normal]: [Guidance: This section is the core NBA evidence. Copy the course COs exactly as they appear in the approved course file
+P57 [Heading 2]: Course Outcomes Addressed by the Micro Project
+P59 [Normal]: [Guidance: Bloom’s levels: L1 Remember, L2 Understand, L3 Apply, L4 Analyse, L5 Evaluate, L6 Create. A micro project sho
+P60 [Heading 2]: CO – PO – PSO Mapping Matrix
+P62 [Normal]: Correlation levels: 3 – High (Substantial),  2 – Medium (Moderate),  1 – Low (Slight),  “–” – No correlation
+P63 [Heading 2]: Justification for CO – PO / PSO Mapping
+P65 [Heading 2]: Programme Outcomes (NBA SAR – Tier I) – Reference with Keywords
+P68 [Heading 1]: CHAPTER 1
+P69 [Normal]: INTRODUCTION
+P70 [Heading 2]: 1.1  Background and Motivation
+P71 [Normal]: [Guidance: Introduce the application domain in 1–2 paragraphs and explain why machine learning is needed for it, rather 
+P72 [Heading 2]: 1.2  Problem Statement
+P73 [Normal]: [Guidance: State the problem in 3–5 sentences: what is to be predicted or discovered, from which data, and why it matter
+P74 [Heading 2]: 1.3  ML Problem Formulation
+P75 [Normal]: [Guidance: Translate the problem into a machine learning task. Fixing the success criterion here, before training, preve
+P76 [Normal]: Table 1.1: Machine Learning Problem Formulation
+P78 [Heading 2]: 1.4  Objectives
+P79 [Normal]: [Guidance: 3–5 objectives starting with action verbs, for example: collect and prepare a dataset of …; implement and tra
+P80 [Heading 2]: 1.5  Scope and Limitations
+P81 [Heading 2]: 1.6  Organisation of the Report
+P82 [Heading 1]: CHAPTER 2
+P83 [Normal]: LITERATURE SURVEY
+P84 [Heading 2]: 2.1  Review of Related Work
+P85 [Normal]: [Guidance: Review at least 5 sources: research papers (IEEE Xplore, ScienceDirect, Springer, arXiv, Google Scholar), tex
+P86 [Normal]: Table 2.1: Summary of Literature Survey
+P88 [Heading 2]: 2.2  Research Gap Identified
+P89 [Heading 2]: 2.3  Proposed Approach
+P90 [Normal]: [Guidance: Explain how the proposed model or data addresses the gap, and why the chosen algorithm is suitable.]
+P91 [Heading 1]: CHAPTER 3
+P92 [Normal]: DATASET DESCRIPTION
+P93 [Normal]: [Guidance: This chapter is mandatory and is evaluated under rubric criterion C3. The dataset must be approved by the gui
+P94 [Heading 2]: 3.1  Choice of Data Source
+P95 [Normal]: [Guidance: Kaggle datasets are discouraged because they are often re-uploaded copies with unclear origin, licence or pre
+P96 [Normal]: Table 3.1: Recommended Data Sources
+P98 [Heading 2]: 3.2  Dataset Details and Provenance
+P99 [Normal]: Table 3.2: Dataset Provenance
+P101 [Heading 2]: 3.3  Dataset Characteristics
+P102 [Normal]: Table 3.3: Dataset Summary
+P104 [Heading 2]: 3.4  Data Dictionary
+P105 [Normal]: Table 3.4: Description of Features
+P107 [Heading 2]: 3.5  Exploratory Data Analysis (EDA)
+P108 [Normal]: [Guidance: Include at least three of: class distribution bar chart, histograms or density plots, box plots for outliers,
+P109 [Normal]: Fig. 3.1: Class Distribution of the Target Variable
+P110 [Normal]: Fig. 3.2: Correlation Heatmap of Features
+P111 [Heading 2]: 3.6  Data Quality Issues Identified
+P113 [Heading 1]: CHAPTER 4
+P114 [Normal]: DATA PREPROCESSING AND FEATURE ENGINEERING
+P115 [Heading 2]: 4.1  Preprocessing Pipeline
+P116 [Normal]: Fig. 4.1: Data Preprocessing Pipeline
+P117 [Normal]: Table 4.1: Preprocessing Steps
+P119 [Heading 2]: 4.2  Feature Engineering and Selection
+P120 [Normal]: [Guidance: Describe new features created, and any selection or reduction method (correlation filter, chi-square, mutual 
+P121 [Heading 2]: 4.3  Train / Validation / Test Split
+P122 [Normal]: [Guidance: Split the data BEFORE fitting scalers, imputers or SMOTE, and fit them on the training set only; otherwise in
+P123 [Normal]: Table 4.2: Data Split
+P125 [Normal]: Split strategy: ☐ Stratified   ☐ Random   ☐ Time-based   ☐ Group-based     k-fold CV: k = ____     Random seed: ____
+P126 [Heading 1]: CHAPTER 5
+P127 [Normal]: METHODOLOGY AND MODEL DESIGN
+P128 [Heading 2]: 5.1  Overall Workflow
+P129 [Normal]: Fig. 5.1: Proposed System Workflow
+P130 [Heading 2]: 5.2  Baseline Model
+P131 [Normal]: [Guidance: A simple baseline is compulsory, so that the improvement of the proposed model can be measured. Examples: maj
+P132 [Heading 2]: 5.3  Proposed Algorithm(s)
+P133 [Normal]: [Guidance: For each algorithm write: (a) working principle; (b) hypothesis or model equation; (c) loss / cost / objectiv
+P134 [Normal]: Table 5.1: Algorithm Summary
+P136 [Heading 2]: 5.4  Algorithm Steps / Pseudocode
+P137 [Normal]: Step 1: Load the dataset and apply the preprocessing pipeline (Chapter 4).
+P138 [Normal]: Step 2: Initialise the model parameters / hyperparameters.
+P139 [Normal]: Step 3: Repeat until the stopping criterion is met: compute predictions, compute the loss, update parameters.
+P140 [Normal]: Step 4: Evaluate on the validation set and tune hyperparameters.
+P141 [Normal]: Step 5: Retrain on the final configuration and evaluate once on the test set.
+P142 [Heading 2]: 5.5  Model Architecture (for neural networks)
+P143 [Normal]: Table 5.2: Network Architecture
+P145 [Heading 2]: 5.6  Hyperparameter Tuning
+P146 [Normal]: Table 5.3: Hyperparameters
+P148 [Heading 1]: CHAPTER 6
+P149 [Normal]: MODEL TRAINING AND CONVERGENCE ANALYSIS
+P150 [Heading 2]: 6.1  Experimental Environment
+P151 [Normal]: [Guidance: Record exact versions so that the results can be reproduced. (Supports PO5 – Engineering Tool Usage.)]
+P152 [Normal]: Table 6.1: Hardware and Software Environment
+P154 [Heading 2]: 6.2  Training Configuration
+P155 [Normal]: Table 6.2: Training Settings
+P157 [Heading 2]: 6.3  Convergence Analysis
+P158 [Normal]: [Guidance: Show that the learning algorithm actually converged. Plot the training and validation loss (and the main metr
+P159 [Normal]: Fig. 6.1: Loss Curves – Training vs Validation
+P160 [Normal]: Fig. 6.2: Metric Curves – Training vs Validation
+P161 [Normal]: Table 6.3: Training Log at Selected Epochs / Iterations
+P163 [Normal]: Table 6.4: Convergence Summary
+P165 [Heading 2]: 6.4  Overfitting and Underfitting Diagnosis
+P166 [Normal]: [Guidance: Compare training and validation scores. A large gap indicates overfitting (high variance); low scores on both
+P167 [Normal]: Fig. 6.3: Learning Curve
+P169 [Heading 2]: 6.5  Key Code Segments
+P170 [Normal]: [Guidance: Only short, commented segments here (data loading, pipeline, training loop or fit call, evaluation). The full
+P171 [Normal]: Listing 6.1: ______________________
+P172 [Heading 2]: 6.6  Module Description and Individual Contribution
+P173 [Normal]: [Guidance: Identifying who did what is evidence for PO8 – Individual and Collaborative Team Work.]
+P175 [Heading 1]: CHAPTER 7
+P176 [Normal]: EVALUATION AND RESULTS
+P177 [Heading 2]: 7.1  Evaluation Metrics
+P178 [Normal]: [Guidance: Choose metrics that suit the task and justify them. Accuracy alone is not acceptable for imbalanced data; rep
+P179 [Normal]: Table 7.1: Metric Reference by Task Type
+P181 [Normal]: Table 7.2: Metrics Selected for this Project
+P183 [Heading 2]: 7.2  Results on the Test Set
+P184 [Normal]: Table 7.3: Performance Comparison of Models
+P186 [Normal]: [Guidance: Replace “Metric 1…4” with the actual metric names (e.g. Accuracy, Precision, Recall, F1). Highlight the best 
+P187 [Heading 2]: 7.3  Confusion Matrix / Residual Analysis
+P188 [Normal]: Fig. 7.1: ______________________
+P189 [Heading 2]: 7.4  ROC and Precision–Recall Curves (classification)
+P190 [Normal]: Fig. 7.2: ROC Curve
+P191 [Heading 2]: 7.5  Comparison with Existing Work
+P193 [Normal]: [Guidance: A fair comparison needs the same dataset and metric; if the datasets differ, say so clearly.]
+P194 [Heading 2]: 7.6  Error Analysis
+P195 [Normal]: [Guidance: Examine misclassified or worst-predicted samples. Which classes are confused, which input conditions cause la
+P196 [Heading 2]: 7.7  Model Interpretation
+P197 [Normal]: [Guidance: Explain what the model has learned: feature importance (tree models), coefficients (linear models), permutati
+P198 [Normal]: Fig. 7.3: Feature Importance
+P199 [Heading 2]: 7.8  Ablation Study (optional)
+P200 [Normal]: [Guidance: Remove one component at a time (a feature group, preprocessing step, augmentation or layer) and report the ch
+P201 [Heading 2]: 7.9  Output Screenshots / Demo (if deployed)
+P202 [Normal]: [Guidance: If the model is deployed (Streamlit, Flask, Gradio), add screenshots of sample inputs and predictions.]
+P203 [Heading 1]: CHAPTER 8
+P204 [Normal]: RESPONSIBLE AI: SOCIETAL, ENVIRONMENTAL AND ETHICAL CONSIDERATIONS
+P205 [Normal]: [Guidance: Important for NBA attainment of PO6 and PO7, which are otherwise hard to evidence.]
+P207 [Heading 1]: CHAPTER 9
+P208 [Normal]: CONCLUSION AND FUTURE SCOPE
+P209 [Heading 2]: 9.1  Conclusion
+P210 [Normal]: Table 9.1: Achievement of Objectives
+P212 [Normal]: [Guidance: Follow the table with one paragraph summarising the best model, its test-set performance against the success 
+P213 [Heading 2]: 9.2  Limitations
+P214 [Heading 2]: 9.3  Future Scope
+P215 [Normal]: [Guidance: For example: more or more diverse data, other algorithms, deployment on edge devices, real-time use.]
+P216 [Heading 1]: REFERENCES
+P217 [Normal]: [Guidance: IEEE style, numbered in the order of citation. Datasets and major software libraries must also be cited. Form
+P218 [Normal]: [1]  A. Author and B. Author, “Title of the paper,” Name of the Journal, vol. x, no. x, pp. xxx–xxx, Year, doi: xx.xxxx.
+P219 [Normal]: [2]  A. Author, Title of the Book, xth ed. City, Country: Publisher, Year.
+P220 [Normal]: [3]  Creator(s) / Organisation, “Dataset title,” Repository name, Version x, Year. [Online]. Available: DOI or URL (Acce
+P221 [Normal]: [4]  F. Pedregosa et al., “Scikit-learn: Machine learning in Python,” Journal of Machine Learning Research, vol. 12, pp.
+P222 [Normal]: [5]
+P223 [Heading 1]: APPENDIX A – ASSESSMENT RUBRICS
+P224 [Normal]: [Guidance: Each criterion is scored 1–4. Total = 32, scaled to the marks allotted. Write the CO number against each crit
+P226 [Heading 1]: APPENDIX B – INDIVIDUAL ASSESSMENT SHEET
+P227 [Normal]: [Guidance: Evaluate each student individually, even within a team. Marks must match the rubric levels in Appendix C.]
+P231 [Heading 1]: APPENDIX C – STUDENT SELF-REFLECTION
+P232 [Normal]: [Guidance: Each student answers individually in 2–3 lines per question. Supports PO11 – Life-Long Learning.]
+P233 [Normal]: Student 1:  Roll No. ____________   Name: ______________________________
+P235 [Normal]: Student 2:  Roll No. ____________   Name: ______________________________
+P237 [Normal]: [Guidance: Repeat the table above for every team member.]
+P238 [Heading 1]: REPORT PREPARATION GUIDELINES
+P239 [Normal]: [Guidance: For students – remove this page before final printing.]

@@ -1,0 +1,368 @@
+{
+  "project_metadata": {
+    "title": "GlycoRisk AI: Explainable, Risk-Calibrated Diabetes Prediction & Clinical Intelligence Platform",
+    "short_title": "GlycoRisk AI",
+    "subtitle": "Clinical Intelligence Platform for Early-Onset Type-2 Diabetes Risk Prediction",
+    "domain": "Clinical Decision Support Systems / Medical Artificial Intelligence",
+    "task_type": "Supervised Binary Classification & Probability Calibration",
+    "generated_timestamp": "2026-10-21T06:30:50.273269+00:00"
+  },
+  "dataset_facts": {
+    "name": "Pima Indians Diabetes Database",
+    "source": "National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK) / UCI Machine Learning Repository / Kaggle",
+    "url_doi": "https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database / https://doi.org/10.24432/C57K72",
+    "creators": "Vincent Sigillito, National Institute of Diabetes and Digestive and Kidney Diseases",
+    "year": "1990",
+    "license": "Open Data Commons Public Domain Dedication and License (PDDL) / CC0 Public Domain",
+    "access_date": "2026-10-21",
+    "citation": "Smith, J.W., Everhart, J.E., Dickson, W.C., Knowler, W.C., & Johannes, R.S. (1988). Using the ADAP learning algorithm to forecast the onset of diabetes mellitus. In Proceedings of the Symposium on Computer Applications and Medical Care (pp. 261-265). IEEE Computer Society Press.",
+    "population_demographics": "Females of Pima Indian heritage, aged >= 21 years living near Phoenix, Arizona, USA",
+    "sample_count": 768,
+    "feature_count": 8,
+    "target": "Outcome",
+    "positive_class_count": 267,
+    "negative_class_count": 500,
+    "positive_prevalence_pct": 34.9,
+    "negative_prevalence_pct": 65.1,
+    "train_samples": 537,
+    "val_samples": 115,
+    "test_samples": 116,
+    "train_ratio": "70%",
+    "val_ratio": "15%",
+    "test_ratio": "15%",
+    "features": [
+      "Pregnancies",
+      "Glucose",
+      "BloodPressure",
+      "SkinThickness",
+      "Insulin",
+      "BMI",
+      "DiabetesPedigreeFunction",
+      "Age"
+    ],
+    "physiological_zeros": {
+      "Glucose": {
+        "zeros": 5,
+        "pct": 0.7
+      },
+      "BloodPressure": {
+        "zeros": 35,
+        "pct": 4.6
+      },
+      "SkinThickness": {
+        "zeros": 227,
+        "pct": 29.6
+      },
+      "Insulin": {
+        "zeros": 374,
+        "pct": 48.7
+      },
+      "BMI": {
+        "zeros": 11,
+        "pct": 1.4
+      }
+    }
+  },
+  "preprocessing_facts": {
+    "pipeline": "Physiological Zero Conversion -> Stratified 70/15/15 Split -> KNN Imputation (k=5) -> Standard Scaling",
+    "leakage_protection": "Imputation and scaling fit strictly on X_train only; transformed onto X_val and X_test.",
+    "imputation_strategy": "KNNImputer (k=5)",
+    "scaling": "StandardScaler (z = (x - mu) / sigma)"
+  },
+  "model_architecture_facts": {
+    "baseline_models": [
+      {
+        "name": "Logistic Regression (L2)",
+        "hyperparameters": {
+          "C": 0.1,
+          "class_weight": "balanced",
+          "dual": false,
+          "fit_intercept": true,
+          "intercept_scaling": 1,
+          "l1_ratio": 0.0,
+          "max_iter": 1000,
+          "n_jobs": null,
+          "penalty": "deprecated",
+          "random_state": 42,
+          "solver": "lbfgs",
+          "tol": 0.0001,
+          "verbose": 0,
+          "warm_start": false
+        }
+      },
+      {
+        "name": "Support Vector Machine (RBF)",
+        "hyperparameters": {
+          "C": 0.1,
+          "break_ties": false,
+          "cache_size": 200,
+          "class_weight": "balanced",
+          "coef0": 0.0,
+          "decision_function_shape": "ovr",
+          "degree": 3,
+          "gamma": 0.05,
+          "kernel": "rbf",
+          "max_iter": -1,
+          "probability": true,
+          "random_state": 42,
+          "shrinking": true,
+          "tol": 0.001,
+          "verbose": false
+        }
+      },
+      {
+        "name": "Random Forest Classifier",
+        "hyperparameters": {
+          "n_estimators": 100,
+          "max_depth": 3
+        }
+      },
+      {
+        "name": "LightGBM Classifier",
+        "hyperparameters": {
+          "learning_rate": 0.05,
+          "num_leaves": 15
+        }
+      }
+    ],
+    "primary_model": {
+      "name": "XGBoost Classifier (Gradient Boosted Decision Trees)",
+      "framework": "XGBoost 3.4.1",
+      "loss_function": "Binary Cross-Entropy (Log-Loss)",
+      "scale_pos_weight": 1.872,
+      "best_iteration": 40,
+      "hyperparameters": {
+        "objective": "binary:logistic",
+        "base_score": null,
+        "booster": null,
+        "callbacks": null,
+        "colsample_bylevel": null,
+        "colsample_bynode": null,
+        "colsample_bytree": 0.8,
+        "device": null,
+        "early_stopping_rounds": 20,
+        "enable_categorical": true,
+        "eval_metric": [
+          "logloss",
+          "auc"
+        ],
+        "feature_types": null,
+        "feature_weights": null,
+        "gamma": null,
+        "grow_policy": null,
+        "importance_type": null,
+        "interaction_constraints": null,
+        "learning_rate": 0.05,
+        "max_bin": null,
+        "max_cat_threshold": null,
+        "max_cat_to_onehot": null,
+        "max_delta_step": null,
+        "max_depth": 3,
+        "max_leaves": null,
+        "min_child_weight": null,
+        "missing": NaN,
+        "monotone_constraints": null,
+        "multi_strategy": null,
+        "n_estimators": 150,
+        "n_jobs": null,
+        "num_parallel_tree": null,
+        "random_state": 42,
+        "reg_alpha": 0.0,
+        "reg_lambda": null,
+        "sampling_method": null,
+        "scale_pos_weight": 1.8716577540106951,
+        "subsample": 0.8,
+        "tree_method": null,
+        "validate_parameters": null,
+        "verbosity": null
+      }
+    },
+    "calibration": {
+      "method": "Isotonic Regression",
+      "target": "Brier Score minimization",
+      "validation_brier_raw": 0.1701,
+      "validation_brier_calibrated": 0.1646
+    }
+  },
+  "test_results_facts": {
+    "primary_model_test_metrics": {
+      "accuracy": 0.7672,
+      "roc_auc": 0.8408,
+      "pr_auc": 0.713,
+      "sensitivity_recall": 0.8293,
+      "specificity": 0.7333,
+      "ppv_precision": 0.6296,
+      "npv": 0.8871,
+      "f1_score": 0.7158,
+      "brier_score": 0.1585,
+      "true_positives": 34,
+      "false_positives": 20,
+      "true_negatives": 55,
+      "false_negatives": 7
+    },
+    "bootstrap_95_ci": {
+      "roc_auc": {
+        "mean": 0.8419704457346224,
+        "ci_lower": 0.7683785308484655,
+        "ci_upper": 0.9110678521040363,
+        "formatted": "0.842 (95% CI: [0.768, 0.911])"
+      },
+      "pr_auc": {
+        "mean": 0.7164367809819588,
+        "ci_lower": 0.5907259207692054,
+        "ci_upper": 0.8261085370392349,
+        "formatted": "0.716 (95% CI: [0.591, 0.826])"
+      },
+      "sensitivity": {
+        "mean": 0.8292576089052075,
+        "ci_lower": 0.7058823529411765,
+        "ci_upper": 0.9375473484848484,
+        "formatted": "0.829 (95% CI: [0.706, 0.938])"
+      },
+      "specificity": {
+        "mean": 0.7332659699131834,
+        "ci_lower": 0.6341377533493645,
+        "ci_upper": 0.8333333333333334,
+        "formatted": "0.733 (95% CI: [0.634, 0.833])"
+      },
+      "ppv": {
+        "mean": 0.6289253971654634,
+        "ci_lower": 0.5,
+        "ci_upper": 0.7592995169082125,
+        "formatted": "0.629 (95% CI: [0.500, 0.759])"
+      },
+      "f1": {
+        "mean": 0.7131449661055529,
+        "ci_lower": 0.6020967741935485,
+        "ci_upper": 0.8085359675785206,
+        "formatted": "0.713 (95% CI: [0.602, 0.809])"
+      },
+      "brier_score": {
+        "mean": 0.15827422745419772,
+        "ci_lower": 0.11739892274345626,
+        "ci_upper": 0.1977659270454132,
+        "formatted": "0.158 (95% CI: [0.117, 0.198])"
+      }
+    },
+    "all_models_comparison": [
+      {
+        "model_key": "logistic_regression",
+        "roc_auc": 0.8725203252032521,
+        "pr_auc": 0.800591783198604,
+        "sensitivity": 0.6829268292682927,
+        "specificity": 0.84,
+        "ppv": 0.7,
+        "npv": 0.8289473684210527,
+        "f1": 0.691358024691358,
+        "accuracy": 0.7844827586206896,
+        "brier_score": 0.1441912810826945,
+        "tp": 28,
+        "fp": 12,
+        "tn": 63,
+        "fn": 13
+      },
+      {
+        "model_key": "random_forest",
+        "roc_auc": 0.8669918699186991,
+        "pr_auc": 0.7778444440634871,
+        "sensitivity": 0.7804878048780488,
+        "specificity": 0.8133333333333334,
+        "ppv": 0.6956521739130435,
+        "npv": 0.8714285714285714,
+        "f1": 0.735632183908046,
+        "accuracy": 0.8017241379310345,
+        "brier_score": 0.14972920316729343,
+        "tp": 32,
+        "fp": 14,
+        "tn": 61,
+        "fn": 9
+      },
+      {
+        "model_key": "svm_rbf",
+        "roc_auc": 0.8617886178861789,
+        "pr_auc": 0.7868903846108413,
+        "sensitivity": 0.6097560975609756,
+        "specificity": 0.88,
+        "ppv": 0.7352941176470589,
+        "npv": 0.8048780487804879,
+        "f1": 0.6666666666666666,
+        "accuracy": 0.7844827586206896,
+        "brier_score": 0.1473903147771873,
+        "tp": 25,
+        "fp": 9,
+        "tn": 66,
+        "fn": 16
+      },
+      {
+        "model_key": "xgboost_uncalibrated",
+        "roc_auc": 0.8500813008130081,
+        "pr_auc": 0.7496650287951018,
+        "sensitivity": 0.7804878048780488,
+        "specificity": 0.7866666666666666,
+        "ppv": 0.6666666666666666,
+        "npv": 0.8676470588235294,
+        "f1": 0.7191011235955056,
+        "accuracy": 0.7844827586206896,
+        "brier_score": 0.15346218645572662,
+        "tp": 32,
+        "fp": 16,
+        "tn": 59,
+        "fn": 9
+      },
+      {
+        "model_key": "lightgbm",
+        "roc_auc": 0.8461788617886179,
+        "pr_auc": 0.7589193767593447,
+        "sensitivity": 0.7073170731707317,
+        "specificity": 0.7866666666666666,
+        "ppv": 0.6444444444444445,
+        "npv": 0.8309859154929577,
+        "f1": 0.6744186046511628,
+        "accuracy": 0.7586206896551724,
+        "brier_score": 0.15390648077175967,
+        "tp": 29,
+        "fp": 16,
+        "tn": 59,
+        "fn": 12
+      },
+      {
+        "model_key": "calibrated_primary",
+        "roc_auc": 0.8408130081300812,
+        "pr_auc": 0.7130234344388211,
+        "sensitivity": 0.8292682926829268,
+        "specificity": 0.7333333333333333,
+        "ppv": 0.6296296296296297,
+        "npv": 0.8870967741935484,
+        "f1": 0.7157894736842105,
+        "accuracy": 0.7672413793103449,
+        "brier_score": 0.15853619188707818,
+        "tp": 34,
+        "fp": 20,
+        "tn": 55,
+        "fn": 7
+      }
+    ],
+    "clinical_error_forensics": {
+      "total_test_patients": 116,
+      "true_positives": 34,
+      "true_negatives": 55,
+      "false_negatives_count": 7,
+      "false_positives_count": 20,
+      "fn_mean_glucose": 117.57142857142857,
+      "tp_mean_glucose": 142.47058823529412,
+      "tn_mean_glucose": 98.98181818181818,
+      "fp_mean_glucose": 124.25,
+      "clinical_takeaway": "False Negatives (missed diabetic cases: n=7) demonstrated an average plasma glucose of 117.6 mg/dL, which is substantially lower than True Positives (142.5 mg/dL). These patients represent atypical early-stage or normoglycemic diabetes presentations with high insulin resistance masked by normal fasting glucose. Conversely, False Positives (n=20) had elevated BMI (34.3 kg/m^2) and Age (39.3 years), triggering precautionary clinical warnings."
+    }
+  },
+  "explainability_facts": {
+    "method": "TreeSHAP (Shapley Additive exPlanations)",
+    "top_global_risk_factors": [
+      "Glucose",
+      "BMI",
+      "Age",
+      "DiabetesPedigreeFunction"
+    ],
+    "interpretability_output": "Global mean |SHAP| ranking + Local Waterfall decomposition per patient"
+  }
+}
