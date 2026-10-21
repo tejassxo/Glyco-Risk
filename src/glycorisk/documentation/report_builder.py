@@ -983,7 +983,14 @@ def build_report():
         "clinical risk tier (Low, Moderate, High, Critical), ADA clinical guidance, and full TreeSHAP waterfall attribution tables."
     )
 
-    for i, p in enumerate(doc.paragraphs):
+    ch7_comp_text = (
+        "A comparative benchmarking of GlycoRisk AI against historical literature on the Pima Indians diabetes cohort is summarized in Table 7.4. "
+        "While earlier studies by Smith et al. [1], Sisodia & Sisodia [6], and Wu et al. [8] prioritized raw classification accuracy—often failing to handle zero artifacts, "
+        "leaking test data during imputation, or ignoring probability calibration—our calibrated XGBoost architecture deliberately optimizes clinical Sensitivity (82.93%), "
+        "ROC-AUC (0.8408), and Brier calibration score (0.1585) under a leak-free 70/15/15 stratified protocol."
+    )
+
+    for i, p in enumerate(list(doc.paragraphs)):
         txt = p.text.strip()
         if txt == "7.1  Evaluation Metrics":
             doc.paragraphs[i+1].text = ch7_metrics_text
@@ -994,30 +1001,24 @@ def build_report():
             for r in doc.paragraphs[i+1].runs:
                 style_run(r, font_size_pt=12)
         elif txt == "7.3  Confusion Matrix / Residual Analysis":
-            doc.paragraphs[i].insert_paragraph_before(ch7_cm_text)
-            for r in doc.paragraphs[i].runs:
-                style_run(r, font_size_pt=12)
-        elif txt == "7.4  ROC and Precision–Recall Curves (classification)":
-            doc.paragraphs[i].insert_paragraph_before(ch7_roc_text)
-            for r in doc.paragraphs[i].runs:
-                style_run(r, font_size_pt=12)
+            insert_paragraph_after(p, ch7_cm_text)
+        elif txt.startswith("7.4  ROC and Precision"):
+            insert_paragraph_after(p, ch7_roc_text)
+        elif txt == "7.5  Comparison with Existing Work":
+            insert_paragraph_after(p, ch7_comp_text)
         elif txt == "7.6  Error Analysis":
-            doc.paragraphs[i+1].text = ch7_forensics_text
-            for r in doc.paragraphs[i+1].runs:
-                style_run(r, font_size_pt=12)
+            p_err = insert_paragraph_after(p, ch7_forensics_text)
+            insert_image_after(p_err, figures_dir / "fig_7_5_error_analysis.png", width_inches=5.0, caption="Fig. 7.5: Clinical Error Forensics comparing False Negatives (FN, n=7) against True Positives (TP, n=34)")
         elif txt == "7.7  Model Interpretation":
-            doc.paragraphs[i+1].text = ch7_shap_text
-            for r in doc.paragraphs[i+1].runs:
-                style_run(r, font_size_pt=12)
-        elif txt == "7.8  Ablation Study (optional)":
+            p_shap = insert_paragraph_after(p, ch7_shap_text)
+            insert_image_after(p_shap, figures_dir / "fig_7_7_shap_waterfall.png", width_inches=5.0, caption="Fig. 7.7: Local Patient-Level TreeSHAP Waterfall Attribution")
+        elif txt.startswith("7.8"):
             p.text = "7.8  Probability Calibration and Reliability Analysis"
-            doc.paragraphs[i+1].text = ch7_calib_text
-            for r in doc.paragraphs[i+1].runs:
-                style_run(r, font_size_pt=12)
-        elif txt == "7.9  Output Screenshots / Demo (if deployed)":
-            doc.paragraphs[i+1].text = ch7_demo_text
-            for r in doc.paragraphs[i+1].runs:
-                style_run(r, font_size_pt=12)
+            p_cal = insert_paragraph_after(p, ch7_calib_text)
+            insert_image_after(p_cal, figures_dir / "fig_7_4_calibration_reliability.png", width_inches=5.0, caption="Fig. 7.4: Probability Calibration Curves and Brier Score Reliability Diagram")
+        elif txt.startswith("7.9"):
+            p_demo = insert_paragraph_after(p, ch7_demo_text)
+            insert_image_after(p_demo, figures_dir / "fig_7_6_dashboard_screenshot.png", width_inches=5.2, caption="Fig. 7.6: Interactive GlycoCheck AI Clinical Dashboard & Triage Interface")
 
     # Table 37 (Table 7.2: Selected Metrics for this Project)
     t37 = doc.tables[37]
