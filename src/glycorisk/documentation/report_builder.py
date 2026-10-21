@@ -38,6 +38,22 @@ def insert_paragraph_after(p, text="", font_size_pt=12, bold=False, italic=False
             style_run(r, font_size_pt=font_size_pt, bold=bold, italic=italic)
     return new_p
 
+def insert_image_after(p, image_path, width_inches=5.2, caption=""):
+    new_p_elm = docx.oxml.OxmlElement('w:p')
+    p._element.addnext(new_p_elm)
+    new_p = docx.text.paragraph.Paragraph(new_p_elm, p._parent)
+    new_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    new_p.paragraph_format.space_before = Pt(6)
+    new_p.paragraph_format.space_after = Pt(2)
+    run = new_p.add_run()
+    run.add_picture(str(image_path), width=Inches(width_inches))
+    if caption:
+        cap_p = insert_paragraph_after(new_p, caption, font_size_pt=10, italic=True)
+        cap_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        cap_p.paragraph_format.space_after = Pt(6)
+        return cap_p
+    return new_p
+
 def insert_image_in_cell(cell, image_path, width_inches=5.2):
     cell.text = ""
     p = cell.paragraphs[0]
@@ -50,6 +66,7 @@ def insert_image_in_cell(cell, image_path, width_inches=5.2):
 def build_report():
     base_dir = Path(__file__).resolve().parents[3]
     template_path = base_dir / "ML-Project Documentation.docx"
+    template_base_path = base_dir / "artifacts" / "documentation" / "template_base.docx"
     output_path = base_dir / "artifacts" / "documentation" / "FINAL_GLYCORISK_AI_REPORT.docx"
     facts_path = base_dir / "artifacts" / "documentation" / "project_facts.json"
     figures_dir = base_dir / "artifacts" / "figures"
@@ -58,8 +75,12 @@ def build_report():
     with open(facts_path, "r", encoding="utf-8") as f:
         facts = json.load(f)
 
-    print(f"Opening template: {template_path}")
-    doc = docx.Document(str(template_path))
+    if template_base_path.exists():
+        print(f"Opening pristine base template: {template_base_path}")
+        doc = docx.Document(str(template_base_path))
+    else:
+        print(f"Opening template: {template_path}")
+        doc = docx.Document(str(template_path))
 
     # =========================================================================
     # 1. FRONT MATTER & TITLE PAGE
@@ -389,6 +410,28 @@ def build_report():
         "Chapter 8 addresses Responsible AI, ethics, and green computing. Chapter 9 concludes with achievement of objectives and future research scope."
     )
 
+    # Purge any stray paragraphs from earlier runs or template artifacts
+    stray_prefixes = [
+        "Scope and Limitations: The system is designed specifically as an adjunct",
+        "Organisation of the Report: Chapter 2 reviews relevant literature",
+        "A rigorous audit of the existing literature reveals four critical research gaps:",
+        "Data quality auditing uncovered two primary threats to clinical validity",
+        "Confusion Matrix Analysis: Figure 7.1 details the test-set confusion",
+        "ROC and Precision-Recall Trajectories: Figure 7.2 presents the",
+        "Clinical Error Forensics on Misclassifications: A deep clinical audit",
+        "Explainable AI via TreeSHAP: Figure 7.3 displays the global",
+        "Probability Calibration and Reliability Analysis: Figure 7.4 displays",
+        "Clinical Dashboard Deployment: The GlycoCheck AI",
+        "In this investigation, we successfully designed, implemented, and validated Glyc",
+        "Limitations of the Current Study:",
+        "Future Research Scope:",
+        "To systematically overcome these gaps, GlycoRisk AI introduces a principled four"
+    ]
+    for p in list(doc.paragraphs):
+        txt = p.text.strip()
+        if any(txt.startswith(pref) for pref in stray_prefixes):
+            p._element.getparent().remove(p._element)
+
     for i, p in enumerate(doc.paragraphs):
         txt = p.text.strip()
         if txt == "1.1  Background and Motivation":
@@ -408,14 +451,9 @@ def build_report():
             for r in doc.paragraphs[i+1].runs:
                 style_run(r, font_size_pt=12)
         elif txt == "1.5  Scope and Limitations":
-            # add paragraph after if missing
-            doc.paragraphs[i].insert_paragraph_before(ch1_scope_text)
-            for r in doc.paragraphs[i].runs:
-                style_run(r, font_size_pt=12)
+            insert_paragraph_after(p, ch1_scope_text)
         elif txt == "1.6  Organisation of the Report":
-            doc.paragraphs[i].insert_paragraph_before(ch1_org_text)
-            for r in doc.paragraphs[i].runs:
-                style_run(r, font_size_pt=12)
+            insert_paragraph_after(p, ch1_org_text)
 
     # Table 10 (Table 1.1: Machine Learning Problem Formulation)
     t10 = doc.tables[10]
@@ -470,14 +508,7 @@ def build_report():
             for r in doc.paragraphs[i+1].runs:
                 style_run(r, font_size_pt=12)
         elif txt == "2.2  Research Gap Identified":
-            # insert gap text before 2.3
-            doc.paragraphs[i].insert_paragraph_before(ch2_gap_text)
-            for r in doc.paragraphs[i].runs:
-                style_run(r, font_size_pt=12)
-        elif txt == "2.3  Proposed Approach":
-            doc.paragraphs[i+1].text = ch2_approach_text
-            for r in doc.paragraphs[i+1].runs:
-                style_run(r, font_size_pt=12)
+            insert_paragraph_after(p, ch2_gap_text + "\n\n" + ch2_approach_text)
 
     # Table 11 (Table 2.1: Summary of Literature Survey)
     t11 = doc.tables[11]
@@ -528,9 +559,7 @@ def build_report():
             for r in doc.paragraphs[i+1].runs:
                 style_run(r, font_size_pt=12)
         elif txt == "3.6  Data Quality Issues Identified":
-            doc.paragraphs[i].insert_paragraph_before(ch3_quality_text)
-            for r in doc.paragraphs[i].runs:
-                style_run(r, font_size_pt=12)
+            insert_paragraph_after(p, ch3_quality_text)
 
     # Table 13 (Table 3.2: Dataset Provenance)
     t13 = doc.tables[13]
