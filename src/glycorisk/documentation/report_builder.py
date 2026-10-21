@@ -6,6 +6,7 @@ with zero-fabrication metrics, verified figures, academic narratives, and comple
 
 from pathlib import Path
 import json
+import copy
 import docx
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -267,7 +268,7 @@ def build_report():
     t4 = doc.tables[4]
     toc_pages = [
         ("Certificate", "i"), ("Declaration and Acknowledgement", "ii"), ("Abstract", "iii"),
-        ("Outcome Mapping (CO – PO – PSO)", "iv"), ("Introduction", "1"), ("Literature Survey", "4"),
+        ("Outcome Mapping (CO – PO – PSO)", "v"), ("Introduction", "1"), ("Literature Survey", "4"),
         ("Dataset Description", "7"), ("Data Preprocessing and Feature Engineering", "11"),
         ("Methodology and Model Design", "14"), ("Model Training and Convergence Analysis", "18"),
         ("Evaluation and Results", "22"), ("Responsible AI: Societal, Environmental and Ethical Considerations", "28"),
@@ -1257,12 +1258,75 @@ def build_report():
     t50 = doc.tables[50]
     set_cell_text(t50.rows[11].cells[1], "Verified: All institutional guidance notes purged; document fully compliant.", font_size_pt=9)
 
-    print(f"Saving finalized institutional report to: {output_path}")
-    doc.save(str(output_path))
+    # =========================================================================
+    # 14. INSTITUTIONAL MULTI-SECTION PAGE NUMBERING CONFIGURATION
+    # =========================================================================
+    print("Configuring institutional multi-section page numbering...")
+    cert_idx = None
+    ch1_idx = None
+    for i, p in enumerate(doc.paragraphs):
+        txt = p.text.strip()
+        if txt == "CERTIFICATE":
+            cert_idx = i
+        elif txt == "CHAPTER 1":
+            ch1_idx = i
 
-    # Also overwrite ML-Project Documentation.docx so the root file is finalized
+    body = doc._body._element
+    body_sectPr = body.xpath("w:sectPr")[0]
+
+    if cert_idx is not None and ch1_idx is not None:
+        # Section 0 (Cover / Title page: unnumbered, clean)
+        p_pre_cert = doc.paragraphs[cert_idx - 1]
+        p_pre_cert_pPr = p_pre_cert._element.get_or_add_pPr()
+        if not p_pre_cert_pPr.xpath("w:sectPr"):
+            sectPr0 = docx.oxml.OxmlElement("w:sectPr")
+            t_el0 = docx.oxml.OxmlElement("w:type")
+            t_el0.set(docx.oxml.ns.qn("w:val"), "nextPage")
+            sectPr0.append(t_el0)
+            for tag in ["w:pgSz", "w:pgMar", "w:cols", "w:docGrid"]:
+                el = body_sectPr.find(docx.oxml.ns.qn(tag))
+                if el is not None:
+                    sectPr0.append(copy.deepcopy(el))
+            p_pre_cert_pPr.append(sectPr0)
+
+        # Clear page_break_before on CERTIFICATE so section break cleanly starts page i
+        doc.paragraphs[cert_idx].paragraph_format.page_break_before = False
+
+        # Section 1 (Front Matter: lowerRoman starting at i)
+        p_pre_ch1 = doc.paragraphs[ch1_idx - 1]
+        p_pre_ch1_pPr = p_pre_ch1._element.get_or_add_pPr()
+        if not p_pre_ch1_pPr.xpath("w:sectPr"):
+            sectPr1 = docx.oxml.OxmlElement("w:sectPr")
+            t_el1 = docx.oxml.OxmlElement("w:type")
+            t_el1.set(docx.oxml.ns.qn("w:val"), "nextPage")
+            sectPr1.append(t_el1)
+            for el in body_sectPr.xpath("w:headerReference | w:footerReference"):
+                sectPr1.append(copy.deepcopy(el))
+            for tag in ["w:pgSz", "w:pgMar", "w:cols", "w:docGrid"]:
+                el = body_sectPr.find(docx.oxml.ns.qn(tag))
+                if el is not None:
+                    sectPr1.append(copy.deepcopy(el))
+            pg_num1 = docx.oxml.OxmlElement("w:pgNumType")
+            pg_num1.set(docx.oxml.ns.qn("w:fmt"), "lowerRoman")
+            pg_num1.set(docx.oxml.ns.qn("w:start"), "1")
+            sectPr1.append(pg_num1)
+            p_pre_ch1_pPr.append(sectPr1)
+
+        # Clear page_break_before on CHAPTER 1 so section break cleanly starts page 1
+        doc.paragraphs[ch1_idx].paragraph_format.page_break_before = False
+
+    # Section 2 (Chapter 1 onwards: decimal starting at 1)
+    for el in body_sectPr.xpath("w:pgNumType"):
+        body_sectPr.remove(el)
+    pg_num2 = docx.oxml.OxmlElement("w:pgNumType")
+    pg_num2.set(docx.oxml.ns.qn("w:fmt"), "decimal")
+    pg_num2.set(docx.oxml.ns.qn("w:start"), "1")
+    body_sectPr.append(pg_num2)
+
+    # Save exclusively to the single primary document (no multiple files)
+    print(f"Saving single finalized institutional document to: {template_path}")
     doc.save(str(template_path))
-    print(f"Successfully updated root template: {template_path}")
+    print(f"Successfully finalized single document: {template_path}")
 
 if __name__ == "__main__":
     build_report()
